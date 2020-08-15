@@ -10,7 +10,7 @@
     <select id="delete" parameterType="Likey">
         DELETE FROM likey WHERE store_id=#{storeId} AND member_id=#{memberId}
     </select>
-    <select id="viewLikeStoreList" parameterType="Query" resultType="java.util.List">
+    <select id="LikeStoreList" parameterType="Query" resultType="java.util.List">
         SELECT * FROM likey WHERE #{condition}=#{word}
     </select>
     <select id="viewStore" parameterType="Likey" resultType="Store">

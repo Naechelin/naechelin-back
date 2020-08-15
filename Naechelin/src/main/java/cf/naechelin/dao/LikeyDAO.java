@@ -7,10 +7,10 @@ import cf.naechelin.vo.StoreVO;
 
 import java.util.List;
 
-public interface LikeyDao
+public interface LikeyDAO
 {
     void insert(LikeyVO like)throws LikeyException;
     void delete(LikeyVO like) throws LikeyException;
-    List<LikeyVO> viewLikeStoreList(QueryVO query)throws LikeyException;
-    List<StoreVO>viewMyLikeList(List<LikeyVO> likeyList)throws LikeyException;
+    List<LikeyVO> LikeStoreList(QueryVO query)throws LikeyException;
+    List<StoreVO>MyLikeList(List<LikeyVO> likeyList)throws LikeyException;
 }
