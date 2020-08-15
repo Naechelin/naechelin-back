@@ -1,6 +1,7 @@
 // Likey joenka 2020.08.15
 package cf.naechelin.mapper;
 
+import cf.naechelin.exception.LikeyException;
 import cf.naechelin.vo.LikeyVO;
 import cf.naechelin.vo.QueryVO;
 import cf.naechelin.vo.StoreVO;
@@ -11,6 +12,6 @@ public interface LikeyMapper
 {
     void insert(LikeyVO like)throws LikeyException;
     void delete(LikeyVO like) throws LikeyException;
-    List<LikeyVO> viewLikeStoreList(QueryVO query)throws LikeyExecption;
+    List<LikeyVO> viewLikeStoreList(QueryVO query)throws LikeyException;
     StoreVO viewStore(LikeyVO likey)throws LikeyException;
 }
