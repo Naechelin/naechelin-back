@@ -5,7 +5,7 @@ Naechelin-Back
 1. commit 시 본인 이름의 branch 를 이용하여 커밋한다.    
 2. 본인 branch 가 최신 버전이 아닐 시 pull request 를 통해 버전업을 한 후 한다.  
 3. commit 시 가장 최근 commit 한 사람에게 검토 후 가능하다.
-4. __commit 시 commit change의 title란은 비워두지 않는다.(한글 또느 영어로 작성)__
+4. __commit 시 commit change의 title란은 비워두지 않는다.(한글 또는 영어로 작성)__
 
 --------
 ## Naming Convention
