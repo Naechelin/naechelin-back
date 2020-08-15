@@ -1,4 +1,4 @@
-package cf.naechelin.service.lineservice;
+package cf.naechelin.service.line;
 
 public interface LineService
 {

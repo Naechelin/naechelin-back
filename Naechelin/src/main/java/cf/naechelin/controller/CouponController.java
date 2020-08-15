@@ -1,6 +1,6 @@
 package cf.naechelin.controller;
 
-import cf.naechelin.service.couponservice.CouponService;
+import cf.naechelin.service.coupon.CouponService;
 import org.springframework.stereotype.Controller;
 
 @Controller
