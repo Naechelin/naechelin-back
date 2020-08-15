@@ -1,6 +1,14 @@
 # naechelin-back
 Naechelin-Back 
 
+### Commit 
+commit 시 본인 이름의 branch 를 이용하여 커밋한다.
+본인 branch 가 최신 버전이 아닐 시 pull request 를 통해 버전업을 한 후 한다.
+commit 시 가장 최근 commit 한 사람에게 검토 후 가능하다.
+__commit 시 commit change의 title란은 비워두지 않는다.(한글 또느 영어로 작성)__
+
+
+--------
 ### 1. 자바 파일 맨 위에 주석으로 클래스명과 작성자명과 작성일자를 서술한다.
 
 ### 2. static final 순서로 서술한다.
