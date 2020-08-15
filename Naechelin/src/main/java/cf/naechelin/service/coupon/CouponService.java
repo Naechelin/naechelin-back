@@ -1,4 +1,4 @@
-package cf.naechelin.service.couponservice;
+package cf.naechelin.service.coupon;
 
 public interface CouponService
 {
