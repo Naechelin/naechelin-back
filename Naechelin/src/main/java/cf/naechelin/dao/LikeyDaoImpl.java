@@ -1,5 +1,7 @@
+// likeyDao jeonka 2020.08.15
 package cf.naechelin.dao;
 
+import cf.naechelin.exception.LikeyException;
 import cf.naechelin.mapper.LikeyMapper;
 import cf.naechelin.vo.LikeyVO;
 import cf.naechelin.vo.QueryVO;
@@ -20,7 +22,7 @@ public class LikeyDaoImpl implements LikeyDao
     @Override
     public void insert(LikeyVO like) throws LikeyException
     {
-        likeyMapper.insert(like);
+            likeyMapper.insert(like);
     }
 
     @Override
@@ -30,7 +32,7 @@ public class LikeyDaoImpl implements LikeyDao
     }
 
     @Override
-    public List<LikeyVO> viewLikeStoreList(QueryVO query) throws LikeyExecption
+    public List<LikeyVO> viewLikeStoreList(QueryVO query) throws LikeyException
     {
         return likeyMapper.viewLikeStoreList(query);
     }
