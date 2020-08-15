@@ -15,11 +15,9 @@ public class LikeyDeleteServiceImpl implements LikeyDeleteService
     private LikeyDAO likeyDao;
 
     @Override
-    public void doService(LikeyVO likey) throws LikeyException
+    public void doService(int memberId,int storeId) throws LikeyException
     {
-        if(likey == null){
-            throw new LikeyException("delete");
-        }
+        LikeyVO likey = new LikeyVO(memberId,storeId);
         likeyDao.delete(likey);
     }
 }

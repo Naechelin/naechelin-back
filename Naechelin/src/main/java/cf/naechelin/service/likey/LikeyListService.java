@@ -5,7 +5,7 @@ import cf.naechelin.vo.StoreVO;
 
 import java.util.List;
 
-public interface LikeyListService
+public interface LikeyListService extends LikeyService
 {
     List<StoreVO> doService(String condition, String word)throws LikeyException;
 }

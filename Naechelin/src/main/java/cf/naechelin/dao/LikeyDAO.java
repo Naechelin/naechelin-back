@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface LikeyDAO
 {
-    void insert(LikeyVO like)throws LikeyException;
-    void delete(LikeyVO like) throws LikeyException;
+    void insert(LikeyVO likey)throws LikeyException;
+    void delete(LikeyVO likey) throws LikeyException;
     List<LikeyVO> LikeStoreList(QueryVO query)throws LikeyException;
     List<StoreVO>MyLikeList(List<LikeyVO> likeyList)throws LikeyException;
 }

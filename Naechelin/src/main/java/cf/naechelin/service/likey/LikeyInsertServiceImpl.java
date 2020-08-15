@@ -15,11 +15,9 @@ public class LikeyInsertServiceImpl implements LikeyInsertService
     private LikeyDAO liekyDao;
 
     @Override
-    public void doService(LikeyVO likey) throws LikeyException
+    public void doService(int memberId,int storeId) throws LikeyException
     {
-        if(likey == null){
-            throw new LikeyException("insert error");
-        }
+        LikeyVO likey = new LikeyVO(memberId,storeId);
         liekyDao.insert(likey);
     }
 }
