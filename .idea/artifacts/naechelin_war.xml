@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="naechelin:war">
+    <output-path>$PROJECT_DIR$/Naechelin/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>naechelin</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="naechelin-1.0.0-BUILD-SNAPSHOT.war">
+      <element id="artifact" artifact-name="naechelin:war exploded" />
+    </root>
+  </artifact>
+</component>
