@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface LikeyMapper
 {
-    void insert(LikeyVO like)throws LikeyException;
-    void delete(LikeyVO like) throws LikeyException;
+    void insert(LikeyVO likey)throws LikeyException;
+    void delete(LikeyVO likey) throws LikeyException;
     List<LikeyVO> LikeStoreList(QueryVO query)throws LikeyException;
     StoreVO viewStore(LikeyVO likey)throws LikeyException;
 }

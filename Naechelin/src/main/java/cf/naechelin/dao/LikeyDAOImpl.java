@@ -20,15 +20,15 @@ public class LikeyDAOImpl implements LikeyDAO
     LikeyMapper likeyMapper;
 
     @Override
-    public void insert(LikeyVO like) throws LikeyException
+    public void insert(LikeyVO likey) throws LikeyException
     {
-            likeyMapper.insert(like);
+        likeyMapper.insert(likey);
     }
 
     @Override
-    public void delete(LikeyVO like) throws LikeyException
+    public void delete(LikeyVO likey) throws LikeyException
     {
-        likeyMapper.delete(like);
+        likeyMapper.delete(likey);
     }
 
     @Override

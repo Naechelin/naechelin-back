@@ -5,7 +5,7 @@ import cf.naechelin.vo.LikeyVO;
 import org.springframework.stereotype.Service;
 
 
-public interface LikeyInsertService
+public interface LikeyInsertService extends LikeyService
 {
-    void doService(LikeyVO likey)throws LikeyException;
+    void doService(int memberId,int storeId)throws LikeyException;
 }

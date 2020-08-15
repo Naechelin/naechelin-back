@@ -5,12 +5,12 @@ import java.util.Objects;
 
 public class LikeyVO
 {
-    private int storeId;
     private int memberId;
+    private int storeId;
 
     public LikeyVO() { }
 
-    public LikeyVO(int storeId, int memberId)
+    public LikeyVO(int memberId, int storeId)
     {
         this.storeId = storeId;
         this.memberId = memberId;
