@@ -1,3 +1,4 @@
+// MemoVO jeonka1001 2020.08.15
 package cf.naechelin.vo;
 
 import java.util.Objects;

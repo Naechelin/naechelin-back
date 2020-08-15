@@ -13,8 +13,22 @@
 		<property name="password" value="naechelin"/>
 	</bean>
 
-	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:MybatisConfiguraion.xml"/>
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:LikeyMapper.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"/>
+	</bean>
+	<bean id="Mapp" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cf.naechelin.mapper.LikeyMapper"/>
+		<property name="sqlSessionTemplate" ref="sqlSession"/>
 	</bean>
 
 </beans>
