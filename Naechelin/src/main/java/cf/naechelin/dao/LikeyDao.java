@@ -1,5 +1,6 @@
 package cf.naechelin.dao;
 
+import cf.naechelin.exception.LikeyException;
 import cf.naechelin.vo.LikeyVO;
 import cf.naechelin.vo.QueryVO;
 import cf.naechelin.vo.StoreVO;
@@ -10,6 +11,6 @@ public interface LikeyDao
 {
     void insert(LikeyVO like)throws LikeyException;
     void delete(LikeyVO like) throws LikeyException;
-    List<LikeyVO> viewLikeStoreList(QueryVO query)throws LikeyExecption;
+    List<LikeyVO> viewLikeStoreList(QueryVO query)throws LikeyException;
     List<StoreVO>viewMyLikeList(List<LikeyVO> likeyList)throws LikeyException;
 }
