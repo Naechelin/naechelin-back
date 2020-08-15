@@ -8,5 +8,6 @@
         <typeAlias type="cf.naechelin.vo.LikeyVO" alias="Likey"/>
         <typeAlias type="cf.naechelin.vo.MemoVO" alias="Memo"/>
         <typeAlias type="cf.naechelin.vo.ReviewVO" alias="Review"/>
+        <typeAlias type="cf.naechelin.vo.QueryVO" alias="Query"/>
     </typeAliases>
 </configuration>
