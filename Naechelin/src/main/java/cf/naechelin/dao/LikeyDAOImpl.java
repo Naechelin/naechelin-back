@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository("likeyDao")
-public class LikeyDaoImpl implements LikeyDao
+public class LikeyDAOImpl implements LikeyDAO
 {
 
     @Autowired
@@ -32,13 +32,13 @@ public class LikeyDaoImpl implements LikeyDao
     }
 
     @Override
-    public List<LikeyVO> viewLikeStoreList(QueryVO query) throws LikeyException
+    public List<LikeyVO> LikeStoreList(QueryVO query) throws LikeyException
     {
         return likeyMapper.viewLikeStoreList(query);
     }
 
     @Override
-    public List<StoreVO> viewMyLikeList(List<LikeyVO> likeyList) throws LikeyException
+    public List<StoreVO> MyLikeList(List<LikeyVO> likeyList) throws LikeyException
     {
         List<StoreVO> list = new ArrayList<>();
         for(LikeyVO likey : likeyList)
