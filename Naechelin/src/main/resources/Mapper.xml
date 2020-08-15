@@ -4,12 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cf.naechelin.mapper.LikeyMapper" >
-    <select id="insert" parameterType="Likey">
+    <insert id="insert" parameterType="Likey">
         INSERT INTO likey VALUES(#{memberId}, #{storeId})
-    </select>
-    <select id="delete" parameterType="Likey">
+    </insert>
+    <delete id="delete" parameterType="Likey">
         DELETE FROM likey WHERE store_id=#{storeId} AND member_id=#{memberId}
-    </select>
+    </delete>
     <select id="LikeStoreList" parameterType="Query" resultType="java.util.List">
         SELECT * FROM likey WHERE #{condition}=#{word}
     </select>
