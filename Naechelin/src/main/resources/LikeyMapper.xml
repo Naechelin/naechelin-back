@@ -5,7 +5,7 @@
 
 <mapper namespace="cf.naechelin.mapper.LikeyMapper" >
     <select id="insert" parameterType="Likey">
-        INSERT INTO likey VALUES(#{memberId), #{storeId})
+        INSERT INTO likey VALUES(#{memberId}, #{storeId})
     </select>
     <select id="delete" parameterType="Likey">
         DELETE FROM likey WHERE store_id=#{storeId} AND member_id=#{memberId}
