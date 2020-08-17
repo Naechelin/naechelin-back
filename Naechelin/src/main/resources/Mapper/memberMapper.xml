@@ -5,23 +5,23 @@
 
 <mapper namespace="cf.naechelin.mapper.MemberMapper">
     <select id="insert" parameterType="Member">
-        INSERT INTO member (member_email, member_pass, member_nick, member_birth, member_gender, member_type, member_reg_date, member_tel)
+        INSERT INTO member (memberEmail, memberPass, memberNick, memberBirth, memberGender, memberType, memberRegDate, memberTel)
         VALUES (#{memberEmail}, #{memberPass}, #{memberNick}, #{memberBirth}, #{memberGender}, #{memberType}, CURRENT_TIMESTAMP, #{memberTel})
     </select>
     <update id="update" parameterType="Member">
-        UPDATE member SET member_pass=PASSWORD(#{memberPass}), member_nick=#{memberNick}, member_birth=#{memberBirth}, member_gender=#{memberGender}, member_type=#{memberType}, member_tel=#{memberTel}
-        WHERE member_email=#{memberEmail}
+        UPDATE member SET memberPass=PASSWORD(#{memberPass}), memberNick=#{memberNick}, memberBirth=#{memberBirth}, memberGender=#{memberGender}, memberType=#{memberType}, memberTel=#{memberTel}
+        WHERE memberEmail=#{memberEmail}
     </update>
     <update id="delete" parameterType="Member">
-        UPDATE member SET member_end_date=CURRENT_TIMESTAMP WHERE member_email=#{memberEmail}
+        UPDATE member SET memberEndDate=CURRENT_TIMESTAMP WHERE memberEmail=#{memberEmail}
     </update>
     <select id="selectByMemberEmail" parameterType="java.lang.String" resultType="Member">
-        SELECT * FROM member WHERE member_email=#{memberEmail}
+        SELECT * FROM member WHERE memberEmail=#{memberEmail}
     </select>
     <select id="selectByMemberNick" parameterType="java.lang.String" resultType="Member">
-        SELECT * FROM member WHERE member_nick=#{memberNick}
+        SELECT * FROM member WHERE memberNick=#{memberNick}
     </select>
     <select id="list" resultType="Member">
-        SELECT * FROM member ORDER BY member_email
+        SELECT * FROM member ORDER BY memberEmail
     </select>
 </mapper>
