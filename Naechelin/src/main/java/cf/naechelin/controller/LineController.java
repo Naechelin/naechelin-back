@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 
-@Controller("/line")
+@Controller()
+@RequestMapping("/line")
 public class LineController
 {
     private LineService service;
@@ -41,7 +42,7 @@ public class LineController
     @RequestMapping(method = RequestMethod.GET)
     public String view(HttpSession session)
     {
-        return "view";
+        return "line";
     }
 
     @RequestMapping(value = "/history", method = RequestMethod.GET)
