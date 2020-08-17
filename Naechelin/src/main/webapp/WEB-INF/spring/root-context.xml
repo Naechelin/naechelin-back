@@ -18,7 +18,7 @@
 		<property name="configLocation" value="classpath:mybatisConfiguraion.xml"/>
 		<property name="mapperLocations">
 			<list>
-				<value>classpath:Mapper/likeyMapper.xml</value>
+				<value>classpath:likeyMapper.xml</value>
 				<value>classpath:memberMapper.xml</value>
 				<value>classpath:memberTypeMapper.xml</value>
 				<value>classpath:questionMapper.xml</value>

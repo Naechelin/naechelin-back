@@ -8,6 +8,12 @@ public class QueryVO
 
     public QueryVO(){}
 
+    public QueryVO(String condition, String word)
+    {
+        this.condition = condition;
+        this.word = word;
+    }
+
     public QueryVO(String condition, String word, int intValue)
     {
         this.condition = condition;
