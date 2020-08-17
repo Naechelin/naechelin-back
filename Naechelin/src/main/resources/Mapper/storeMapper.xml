@@ -5,6 +5,33 @@
 
 <mapper namespace="cf.naechelin.mapper.StoreMapper">
     <insert id="insert" parameterType="Store">
-        INSERT INTO store values (default, #{memberId}, #{storeBusinessNum},  )
+        INSERT INTO store VALUES (default, #{memberId}, #{storeBusinessNum}, #{storeName}, #{storeTypeType},
+        #{storeStateType}, #{storeAddress}, #{storeAddressDetail}, #{storeOwner}, #{storeTel}, #{storeFax},
+        #{storeEndDate}, #{storeLatitude}, #{storeLongitude})
     </insert>
+
+    <update id="update" parameterType="Store">
+        UPDATE store SET storeBusinessNum = #{storeBusinessNum},
+        storeName = #{storeName}, storeTypeType = #{storeTypeType},
+        storeStateType = #{storeStateType}, storeAddress = #{storeAddress}, storeAddressDetail = #{storeAddressDetail},
+        storeOwner = #{storeOwner}, storeTel = #{storeTel}, storeFax = #{storeFax},
+        storeLatitude = #{storeLatitude}, storeLongitude = #{storeLongitude}
+        WHERE storeId = #{storeId}
+    </update>
+
+    <update id="delete" parameterType="Store">
+        UPDATE store SET storeEndDate = #{storeEndDate} WHERE storeId = #{storeId}
+    </update>
+
+    <select id="view" parameterType="Store" resultType="Store">
+        SELECT * FROM store WHERE storeId = #{storeId}
+    </select>
+
+    <select id="list" parameterType="Query" resultType="java.util.List">
+        SELECT * FROM store WHERE #{condition} = #{intWord}
+    </select>
+
+
+
+
 </mapper>
