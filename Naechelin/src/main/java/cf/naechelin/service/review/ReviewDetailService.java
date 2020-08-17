@@ -3,7 +3,7 @@ package cf.naechelin.service.review;
 import cf.naechelin.exception.ReviewException;
 import cf.naechelin.vo.ReviewVO;
 
-public interface ReviewInsertService
+public interface ReviewDetailService
 {
-    void doService(int memberId, int storeId) throws ReviewException;
+    ReviewVO doService(ReviewVO review)throws ReviewException;
 }

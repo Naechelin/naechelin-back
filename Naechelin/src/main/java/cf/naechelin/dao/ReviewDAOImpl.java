@@ -3,9 +3,7 @@ package cf.naechelin.dao;
 
 import cf.naechelin.exception.ReviewException;
 import cf.naechelin.mapper.ReviewMapper;
-import cf.naechelin.vo.QueryVO;
-import cf.naechelin.vo.ReviewVO;
-import cf.naechelin.vo.StoreVO;
+import cf.naechelin.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -46,18 +44,36 @@ public class ReviewDAOImpl implements ReviewDAO
     }
 
     @Override
-    public List<ReviewVO> getNaechelinList(QueryVO query) throws ReviewException
+    public List<NaechelinStarVO> getNaechelinList(QueryVO query) throws ReviewException
     {
-        ArrayList<ReviewVO> list;
-        list = (ArrayList<ReviewVO>)reviewMapper.myNaechelinList(query);
+        ArrayList<NaechelinStarVO> list;
+        list = (ArrayList<NaechelinStarVO>)reviewMapper.myNaechelinList(query);
         return list;
     }
 
     @Override
-    public List<StoreVO> getStoreList() throws ReviewException
+    public List<NaechelinStarVO> getStoreList() throws ReviewException
     {
-        ArrayList<StoreVO> list;
-        list = (ArrayList<StoreVO>)reviewMapper.guideList();
+        ArrayList<NaechelinStarVO> list;
+        list = (ArrayList<NaechelinStarVO>)reviewMapper.guideList();
         return list;
+    }
+
+    @Override
+    public MissionVO insertCheck(ReviewVO review) throws ReviewException
+    {
+        return reviewMapper.insertCheck(review);
+    }
+
+    @Override
+    public int findLineId(int memberId) throws ReviewException
+    {
+        return reviewMapper.findLineId(memberId);
+    }
+
+    @Override
+    public void reviewEdit(ReviewVO review) throws ReviewException
+    {
+        reviewMapper.reviewEdit(review);
     }
 }
