@@ -17,5 +17,6 @@
         <typeAlias type="cf.naechelin.vo.LineVO" alias="Line"/>
         <typeAlias type="cf.naechelin.vo.MissionVO" alias="Mission"/>
         <typeAlias type="cf.naechelin.vo.CouponVO" alias="Coupon"/>
+        <typeAlias type="cf.naechelin.vo.ReviewVO" alias="Review"/>
     </typeAliases>
 </configuration>
