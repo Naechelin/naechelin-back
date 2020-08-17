@@ -17,10 +17,18 @@
         SELECT * FROM review WHERE store_id=#{intWord}
     </select>
     <select id="myNaechelinList" parameterType="QueryVO" resultType="java.util.List">
-        SELECT storeId,reviewRating FROM review INNER JOIN line USING(lineId) WHERE reviewRating <![CDATA[ > ]]> 5 AND memberId = #{intWord}
+        SELECT reviewRating-5, storeLatitude,storeLongitude FROM store INNER JOIN (SELECT storeId,reviewRating FROM review INNER JOIN line USING(lineId) WHERE reviewRating <![CDATA[ > ]]> 5 AND memberId = #{memberId}) AS A USING(storeId);
     </select>
     <select id="guideList" resultType="java.util.List">
         SELECT storeId,b.reviewRating as reviewRating,storeLatitude,storeLongitude FROM store INNER JOIN ( SELECT storeId,avg(reviewRating) as reviewRating FROM review GROUP BY storeId ) AS b USING (storeId) WHERE reviewRating <![CDATA[ > ]]> 5;
     </select>
-
+    <select id="insertCheck" parameterType="Review" resultType="Mission">
+        SELECT * FROM mission INNER JOIN (SELECT * FROM line WHERE memberId=#{memberId} ORDER BY lineCreateTime DESC LIMIT 1) AS line USING(lineId) WHERE storeId=#{storeId};
+    </select>
+    <select id="findLineId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT lineId FROM line WHERE memberId=#{memberId}
+    </select>
+    <update id="reviewEdit" parameterType="Review">
+        UPDATE review set reviewPac=#{reviewPac},reviewRating=#{reviewRating},reviewPhoto=#{reviewPhoto} WHERE lineId=#{lineId AND storeI=#{storeId}
+    </update>
 </mapper>
