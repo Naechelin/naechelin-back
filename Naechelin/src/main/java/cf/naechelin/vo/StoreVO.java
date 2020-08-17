@@ -14,6 +14,7 @@ public class StoreVO {
     private String storeTel;
     private String storeFax;
     private String storeStateType;
+    private String storeRegDate;
     private String storeEndDate;
     private double storeLatitude;
     private double storeLongitude;
@@ -25,7 +26,7 @@ public class StoreVO {
 
     }
 
-    public StoreVO(int storeId, int memberId, String storeBusinessNum, String storeName, String storeTypeType, String storeAddress, String storeAddressDetail, String storeOwner, String storeTel, String storeFax, String storeStateType, String storeEndDate, double storeLatitude, double storeLongitude, MemberVO member, StoreTypeVO storeType, StoreStateVO storeState) {
+    public StoreVO(int storeId, int memberId, String storeBusinessNum, String storeName, String storeTypeType, String storeAddress, String storeAddressDetail, String storeOwner, String storeTel, String storeFax, String storeStateType, String storeRegDate, String storeEndDate, double storeLatitude, double storeLongitude, MemberVO member, StoreTypeVO storeType, StoreStateVO storeState) {
         this.storeId = storeId;
         this.memberId = memberId;
         this.storeBusinessNum = storeBusinessNum;
@@ -37,6 +38,7 @@ public class StoreVO {
         this.storeTel = storeTel;
         this.storeFax = storeFax;
         this.storeStateType = storeStateType;
+        this.storeRegDate = storeRegDate;
         this.storeEndDate = storeEndDate;
         this.storeLatitude = storeLatitude;
         this.storeLongitude = storeLongitude;
@@ -133,6 +135,10 @@ public class StoreVO {
         this.storeStateType = storeStateType;
     }
 
+    public String getStoreRegDate() { return storeRegDate; }
+
+    public void setStoreRegDate(String storeRegDate) { this.storeRegDate = storeRegDate; }
+
     public String getStoreEndDate() {
         return storeEndDate;
     }
@@ -199,6 +205,7 @@ public class StoreVO {
                 Objects.equals(storeTel, storeVO.storeTel) &&
                 Objects.equals(storeFax, storeVO.storeFax) &&
                 Objects.equals(storeStateType, storeVO.storeStateType) &&
+                Objects.equals(storeRegDate, storeVO.storeRegDate) &&
                 Objects.equals(storeEndDate, storeVO.storeEndDate) &&
                 Objects.equals(member, storeVO.member) &&
                 Objects.equals(storeType, storeVO.storeType) &&
@@ -207,7 +214,7 @@ public class StoreVO {
 
     @Override
     public int hashCode() {
-        return Objects.hash(storeId, memberId, storeBusinessNum, storeName, storeTypeType, storeAddress, storeAddressDetail, StoreOwner, storeTel, storeFax, storeStateType, storeEndDate, storeLatitude, storeLongitude, member, storeType, storeState);
+        return Objects.hash(storeId, memberId, storeBusinessNum, storeName, storeTypeType, storeAddress, storeAddressDetail, StoreOwner, storeTel, storeFax, storeStateType, storeRegDate, storeEndDate, storeLatitude, storeLongitude, member, storeType, storeState);
     }
 
     @Override
@@ -224,6 +231,7 @@ public class StoreVO {
                 ", storeTel='" + storeTel + '\'' +
                 ", storeFax='" + storeFax + '\'' +
                 ", storeStateType='" + storeStateType + '\'' +
+                ", storeRegDate='" + storeRegDate + '\'' +
                 ", storeEndDate='" + storeEndDate + '\'' +
                 ", storeLatitude=" + storeLatitude +
                 ", storeLongitude=" + storeLongitude +

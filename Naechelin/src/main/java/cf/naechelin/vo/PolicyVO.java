@@ -10,6 +10,13 @@ public class PolicyVO {
 
     public PolicyVO(){}
 
+    public PolicyVO(int storeId, String policyDay, String policyContent)
+    {
+        this.storeId = storeId;
+        this.policyDay = policyDay;
+        this.policyContent = policyContent;
+    }
+
     public PolicyVO(int storeId, StoreVO store, String policyDay, String policyContent) {
         this.storeId = storeId;
         this.store = store;
