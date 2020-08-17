@@ -5,16 +5,16 @@
 
 <mapper namespace="cf.naechelin.mapper.MemberTypeMapper">
     <select id="selectByMemberTypeMember" parameterType="MemberType">
-        SELECT * FROM member_type ORDER BY member_type_name
+        SELECT * FROM memberType ORDER BY memberTypeName
     </select>
     <select id="insert" parameterType="MemberType">
-        INSERT INTO member_type VALUES (#{memberType}, #{memberTypeName})
+        INSERT INTO memberType VALUES (#{memberType}, #{memberTypeName})
     </select>
     <update id="update" parameterType="MemberType">
-        UPDATE member_type SET member_type_name=#{MemberTypeName}
-        WHERE member_type=#{memberType}
+        UPDATE memberType SET memberTypeName=#{MemberTypeName}
+        WHERE memberType=#{memberType}
     </update>
     <delete id="delete" parameterType="java.lang.String">
-        DELETE FROM member_type WHERE member_type_name=${memberTypeName}
+        DELETE FROM memberType WHERE memberTypeName=${memberTypeName}
     </delete>
 </mapper>
