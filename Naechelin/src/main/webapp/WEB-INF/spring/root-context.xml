@@ -41,4 +41,24 @@
 		<property name="mapperInterface" value="cf.naechelin.mapper.StoreTypeMapper"/>
 		<property name="sqlSessionTemplate" ref="sqlSession"/>
 	</bean>
+	
+		<bean id="likeyMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cf.naechelin.mapper.MemberMapper"/>
+		<property name="sqlSessionTemplate" ref="sqlSession"/>
+	</bean>
+
+	<bean id="storeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cf.naechelin.mapper.MemberTypeMapper"/>
+		<property name="sqlSessionTemplate" ref="sqlSession"/>
+	</bean>
+
+	<bean id="storeTypeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cf.naechelin.mapper.QuestionMapper"/>
+		<property name="sqlSessionTemplate" ref="sqlSession"/>
+	</bean>
+
+	<bean id="storeTypeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cf.naechelin.mapper.AnswerMapper"/>
+		<property name="sqlSessionTemplate" ref="sqlSession"/>
+	</bean>
 </beans>
