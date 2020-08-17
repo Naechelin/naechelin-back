@@ -9,5 +9,10 @@
         <typeAlias type="cf.naechelin.vo.MemoVO" alias="Memo"/>
         <typeAlias type="cf.naechelin.vo.ReviewVO" alias="Review"/>
         <typeAlias type="cf.naechelin.vo.QueryVO" alias="Query"/>
+            
+        <typeAlias type="cf.naechelin.vo.MemberVO" alias="Member"/>
+        <typeAlias type="cf.naechelin.vo.MemberTypeVO" alias="MemberType"/>
+        <typeAlias type="cf.naechelin.vo.QuestionVO" alias="Question"/>
+        <typeAlias type="cf.naechelin.vo.AnswerVO" alias="Answer"/>
     </typeAliases>
 </configuration>
