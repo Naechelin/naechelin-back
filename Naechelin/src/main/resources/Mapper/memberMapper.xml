@@ -4,10 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cf.naechelin.mapper.MemberMapper">
-    <select id="insert" parameterType="Member">
+    <insert id="insert" parameterType="Member">
         INSERT INTO member (memberEmail, memberPass, memberNick, memberBirth, memberGender, memberType, memberRegDate, memberTel)
         VALUES (#{memberEmail}, #{memberPass}, #{memberNick}, #{memberBirth}, #{memberGender}, #{memberType}, CURRENT_TIMESTAMP, #{memberTel})
-    </select>
+    </insert>
     <update id="update" parameterType="Member">
         UPDATE member SET memberPass=PASSWORD(#{memberPass}), memberNick=#{memberNick}, memberBirth=#{memberBirth}, memberGender=#{memberGender}, memberType=#{memberType}, memberTel=#{memberTel}
         WHERE memberEmail=#{memberEmail}
