@@ -12,6 +12,6 @@ public interface PolicyDAO
     void update(PolicyVO policy) throws StoreException;
     void delete(PolicyVO policy) throws StoreException;
     PolicyVO view(PolicyVO policy) throws StoreException;
-    List<PolicyVO> list() throws StoreException;
+    List<PolicyVO> list(PolicyVO policy) throws StoreException;
 
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("storeState")
+@Repository("storeStateDAO")
 public class StoreStateDAOImpl implements StoreStateDAO
 {
     @Autowired
