@@ -1,18 +1,24 @@
 package cf.naechelin.controller;
 
+import cf.naechelin.service.line.LineListService;
 import cf.naechelin.service.line.LineService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 
-@Controller()
+@Controller
 @RequestMapping("/line")
 public class LineController
 {
-    private LineService service;
+    @Autowired
+    @Qualifier("LineList")
+    private LineListService listService;
 
     @RequestMapping(method = RequestMethod.HEAD)
     public String insert()
@@ -40,9 +46,13 @@ public class LineController
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String view(HttpSession session)
+    public ModelAndView view(HttpSession session)
     {
-        return "line";
+        ModelAndView view = new ModelAndView();
+
+        view.setViewName("line");
+        view.addObject("lineList", listService.doService());
+        return view;
     }
 
     @RequestMapping(value = "/history", method = RequestMethod.GET)
