@@ -14,5 +14,9 @@
         <typeAlias type="cf.naechelin.vo.MemberTypeVO" alias="MemberType"/>
         <typeAlias type="cf.naechelin.vo.QuestionVO" alias="Question"/>
         <typeAlias type="cf.naechelin.vo.AnswerVO" alias="Answer"/>
+
+        <typeAlias type="cf.naechelin.vo.StoreVO" alias="Store"/>
+        <typeAlias type="cf.naechelin.vo.StoreTypeVO" alias="StoreType"/>
+        <typeAlias type="cf.naechelin.vo.StoreStateVO" alias="StoreState"/>
     </typeAliases>
 </configuration>

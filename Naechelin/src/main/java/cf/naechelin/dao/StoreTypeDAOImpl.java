@@ -17,30 +17,30 @@ public class StoreTypeDAOImpl implements StoreTypeDAO
     @Override
     public void insert(StoreTypeVO storeType) throws StoreException
     {
-
+        mapper.insert(storeType);
     }
 
     @Override
     public void update(StoreTypeVO storeType) throws StoreException
     {
-
+        mapper.update(storeType);
     }
 
     @Override
     public void delete(StoreTypeVO storeType) throws StoreException
     {
-
+        mapper.delete(storeType);
     }
 
     @Override
     public StoreTypeVO view(StoreTypeVO storeType) throws StoreException
     {
-        return null;
+        return mapper.view(storeType);
     }
 
     @Override
     public List<StoreTypeVO> list() throws StoreException
     {
-        return null;
+        return mapper.list();
     }
 }

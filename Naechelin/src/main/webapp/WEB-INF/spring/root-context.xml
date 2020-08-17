@@ -19,6 +19,9 @@
 		<property name="mapperLocations">
 			<list>
 				<value>classpath:likeyMapper.xml</value>
+				<value>classpath:storeMapper.xml</value>
+				<value>classpath:storeTypeMapper.xml</value>
+				<value>classpath:storeStateMapper.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -39,6 +42,11 @@
 
 	<bean id="storeTypeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="cf.naechelin.mapper.StoreTypeMapper"/>
+		<property name="sqlSessionTemplate" ref="sqlSession"/>
+	</bean>
+
+	<bean id="storeStateMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cf.naechelin.mapper.StoreStateMapper"/>
 		<property name="sqlSessionTemplate" ref="sqlSession"/>
 	</bean>
 </beans>
