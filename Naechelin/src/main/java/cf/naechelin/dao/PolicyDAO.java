@@ -1,6 +1,17 @@
 package cf.naechelin.dao;
 
-public class PolicyDAO
+import cf.naechelin.exception.store.StoreException;
+import cf.naechelin.vo.PolicyVO;
+import cf.naechelin.vo.StoreVO;
+
+import java.util.List;
+
+public interface PolicyDAO
 {
+    void insert(PolicyVO policy) throws StoreException;
+    void update(PolicyVO policy) throws StoreException;
+    void delete(PolicyVO policy) throws StoreException;
+    PolicyVO view(PolicyVO policy) throws StoreException;
+    List<PolicyVO> list() throws StoreException;
 
 }
