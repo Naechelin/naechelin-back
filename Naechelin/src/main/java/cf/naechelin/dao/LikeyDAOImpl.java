@@ -34,6 +34,7 @@ public class LikeyDAOImpl implements LikeyDAO
     @Override
     public List<LikeyVO> LikeStoreList(QueryVO query) throws LikeyException
     {
+
         return likeyMapper.LikeStoreList(query);
     }
 

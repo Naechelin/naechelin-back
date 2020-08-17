@@ -11,7 +11,7 @@
         DELETE FROM likey WHERE store_id=#{storeId} AND member_id=#{memberId}
     </delete>
     <select id="LikeStoreList" parameterType="Query" resultType="java.util.List">
-        SELECT * FROM likey WHERE #{condition}=#{word}
+        SELECT * FROM likey WHERE #{condition}=#{intValue}
     </select>
     <select id="viewStore" parameterType="Likey" resultType="Store">
         SELECT * FROM store WHERE store_id=${storeId}
