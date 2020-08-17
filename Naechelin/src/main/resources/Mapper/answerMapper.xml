@@ -5,12 +5,12 @@
 
 <mapper namespace="cf.naechelin.mapper.AnswerMapper">
     <insert id="insert" parameterType="Answer">
-        INSERT INTO answer (answer_content, answer_write_date) VALUES (#{answerContent}, #{answerWriteDate})
+        INSERT INTO answer (answerContent, answerWriteDate) VALUES (#{answerContent}, #{answerWriteDate})
     </insert>
     <delete id="delete" parameterType="Answer">
-        DELETE FROM answer WHERE question_id=#{questionId}
+        DELETE FROM answer WHERE questionId=#{questionId}
     </delete>
     <select id="selectByAnswerContent" parameterType="Answer">
-        SELECT * FROM answer WHERE answer_content LIKE CONCAT('%', #{answerContent}, '%')
+        SELECT * FROM answer WHERE answerContent LIKE CONCAT('%', #{answerContent}, '%')
     </select>
 </mapper>
