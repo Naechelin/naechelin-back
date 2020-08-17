@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cf.naechelin.mapper.ReviewMapper" >
+   <insert id="insert" parameterType="Review">
+       INSERT INTO review VALUES(#{lineId},#{storeId},#{reviewPac},#{reviewPhoto},#{reviewRating})
+   </insert>
+    <delete id="delete" parameterType="Review">
+        DELETE FROM review WHERE line_id=#{lineId} AND store_id=#{storeId}
+    </delete>
+    <select id="viewDetail" parameterType="Review" resultType="Review">
+        SELECT * FROM review WHERE line_id=#{lineId} AND store_id=#{storeId}
+    </select>
+    <select id="reviewList" parameterType="QueryVO" resultType="java.util.List">
+        SELECT * FROM review WHERE store_id=#{intWord}
+    </select>
+    <select id="myNaechelinList" parameterType="QueryVO" resultType="java.util.List">
+        SELECT storeId,reviewRating FROM review INNER JOIN line USING(lineId) WHERE reviewRating <![CDATA[ > ]]> 5 AND memberId = #{intWord}
+    </select>
+    <select id="guideList" resultType="java.util.List">
+        SELECT storeId,b.reviewRating as reviewRating,storeLatitude,storeLongitude FROM store INNER JOIN ( SELECT storeId,avg(reviewRating) as reviewRating FROM review GROUP BY storeId ) AS b USING (storeId) WHERE reviewRating <![CDATA[ > ]]> 5;
+    </select>
+
+</mapper>

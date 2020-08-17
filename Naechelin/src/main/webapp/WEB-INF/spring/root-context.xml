@@ -75,4 +75,9 @@
 		<property name="mapperInterface" value="cf.naechelin.mapper.CouponMapper"/>
 		<property name="sqlSessionTemplate" ref="sqlSession"/>
 	</bean>
+
+	<bean id="reviewMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cf.naechelin.mapper.ReviewMapper"/>
+		<property name="sqlSessionTemplate" ref="sqlSession"/>
+	</bean>
 </beans>
