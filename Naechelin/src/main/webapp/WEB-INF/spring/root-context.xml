@@ -23,6 +23,10 @@
 				<value>classpath:questionMapper.xml</value>
 				<value>classpath:answerMapper.xml</value>
 				<value>classpath:lineMapper.xml</value>
+                <value>classpath:storeMapper.xml</value>
+				<value>classpath:storeTypeMapper.xml</value>
+				<value>classpath:storeStateMapper.xml</value>
+				<value>classpath:policyMapper.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -45,7 +49,17 @@
 		<property name="mapperInterface" value="cf.naechelin.mapper.StoreTypeMapper"/>
 		<property name="sqlSessionTemplate" ref="sqlSession"/>
 	</bean>
-	
+
+	<bean id="storeStateMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cf.naechelin.mapper.StoreStateMapper"/>
+		<property name="sqlSessionTemplate" ref="sqlSession"/>
+	</bean>
+
+	<bean id="policyMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cf.naechelin.mapper.PolicyMapper"/>
+		<property name="sqlSessionTemplate" ref="sqlSession"/>
+	</bean>
+
 	<bean id="memberMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="cf.naechelin.mapper.MemberMapper"/>
 		<property name="sqlSessionTemplate" ref="sqlSession"/>
