@@ -22,7 +22,7 @@
 				<value>classpath:memberMapper.xml</value>
 				<value>classpath:memberTypeMapper.xml</value>
 				<value>classpath:questionMapper.xml</value>
-				<value>classpath:questionMapper.xml</value>
+				<value>classpath:answerMapper.xml</value>
 			</list>
 		</property>
 	</bean>
