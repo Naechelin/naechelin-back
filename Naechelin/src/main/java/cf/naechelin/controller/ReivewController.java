@@ -116,15 +116,15 @@ public class ReivewController
 
     @RequestMapping(value = "review/{storeId}/list",method = RequestMethod.GET)
     public String list(HttpSession session,Model model, @PathVariable("storeId") int storeId){
-        if(session == null){
-            return "review/error";
-        }
+//        if(session == null){
+//            return "review/error";
+//        }
         try
         {
             model.addAttribute("list", listService.doService("storeId", storeId));
         }
         catch(ReviewException e){
-
+            e.printStackTrace();
         }
         return "review/list";
     }

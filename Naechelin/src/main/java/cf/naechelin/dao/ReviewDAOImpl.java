@@ -33,7 +33,8 @@ public class ReviewDAOImpl implements ReviewDAO
     public List<ReviewVO> getList(QueryVO query) throws ReviewException
     {
         ArrayList<ReviewVO> list;
-        list = (ArrayList<ReviewVO>)reviewMapper.viewList(query);
+        list = (ArrayList<ReviewVO>)reviewMapper.reviewList(query);
+
         return list;
     }
 
