@@ -1,13 +1,20 @@
 package cf.naechelin.dao;
 
+import cf.naechelin.mapper.LineMapper;
 import cf.naechelin.vo.LineVO;
+import cf.naechelin.vo.QueryVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository("LineDAO")
 public class LineDAOImpl implements LineDAO
 {
+    @Autowired
+    private LineMapper mapper;
+
     @Override
     public void insert(LineVO line)
     {
@@ -33,8 +40,8 @@ public class LineDAOImpl implements LineDAO
     }
 
     @Override
-    public List<LineVO> list(String condition, String word)
+    public List<LineVO> list(QueryVO query)
     {
-        return null;
+        return mapper.list(query);
     }
 }

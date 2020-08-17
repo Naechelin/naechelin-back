@@ -4,9 +4,9 @@ public class QueryVO
 {
     private String condition;
     private String word;
-    private int IntValue;
+    private int intWord;
 
-    public QueryVO(){}
+    public QueryVO() {}
 
     public QueryVO(String condition, String word)
     {
@@ -14,21 +14,11 @@ public class QueryVO
         this.word = word;
     }
 
-    public QueryVO(String condition, String word, int intValue)
+    public QueryVO(String condition, String word, int intWord)
     {
         this.condition = condition;
         this.word = word;
-        IntValue = intValue;
-    }
-
-    public int getIntValue()
-    {
-        return IntValue;
-    }
-
-    public void setIntValue(int intValue)
-    {
-        IntValue = intValue;
+        this.intWord = intWord;
     }
 
     public String getCondition()
@@ -49,5 +39,15 @@ public class QueryVO
     public void setWord(String word)
     {
         this.word = word;
+    }
+
+    public int getIntWord()
+    {
+        return intWord;
+    }
+
+    public void setIntWord(int intWord)
+    {
+        this.intWord = intWord;
     }
 }
