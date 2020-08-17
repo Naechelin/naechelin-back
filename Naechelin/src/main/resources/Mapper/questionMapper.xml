@@ -5,23 +5,23 @@
 
 <mapper namespace="cf.naechelin.mapper.QuestionMapper">
     <insert id="insert" parameterType="Question">
-        INSERT INTO question (question_title, question_content, question_wirte_date)
+        INSERT INTO question (questionTitle, questionContent, questionWriteDate)
         VALUES (#{questionTitle}, #{questionContent}, CURRENT_TIMESTAMP)
     </insert>
     <update id="update" parameterType="Question">
-        UPDATE question SET question_title=#{questionTitle}, question_content=#{questionContent}
-        WHERE question_id=#{questionId}
+        UPDATE question SET questionTitle=#{questionTitle}, questionContent=#{questionContent}
+        WHERE questionId=#{questionId}
     </update>
     <delete id="delete" parameterType="java.lang.Integer">
-        DELETE FROM question WHERE question_id=#{questionId}
+        DELETE FROM question WHERE questionId=#{questionId}
     </delete>
     <select id="selectByQuestionTitle" parameterType="java.lang.String">
-        SELECT * FROM question WHERE question_title=#{questionTitle}
+        SELECT * FROM question WHERE questionTitle=#{questionTitle}
     </select>
     <select id="selectByQuestionContent" parameterType="java.lang.String">
-        SELECT * FROM question WHERE question_content LIKE CONCAT('%', #{questionContent}, '%')
+        SELECT * FROM question WHERE questionContent LIKE CONCAT('%', #{questionContent}, '%')
     </select>
     <select id="list">
-        SELECT * FROM question ORDER BY question_id
+        SELECT * FROM question ORDER BY questionId
     </select>
 </mapper>

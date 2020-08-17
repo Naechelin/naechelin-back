@@ -15,3 +15,4 @@ public interface LikeyMapper
     List<LikeyVO> LikeStoreList(QueryVO query)throws LikeyException;
     StoreVO viewStore(LikeyVO likey)throws LikeyException;
 }
+
