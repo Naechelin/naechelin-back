@@ -4,34 +4,46 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cf.naechelin.mapper.StoreMapper">
-    <insert id="insert" parameterType="Store">
+    <insert id="insertRequest" parameterType="Store">
         INSERT INTO store VALUES (default, #{memberId}, #{storeBusinessNum}, #{storeName}, #{storeTypeType},
-        #{storeStateType}, #{storeAddress}, #{storeAddressDetail}, #{storeOwner}, #{storeTel}, #{storeFax},
-        #{storeEndDate}, #{storeLatitude}, #{storeLongitude})
+        storeStateType = 'REGISTER_REQ', #{storeAddress}, #{storeAddressDetail}, #{storeOwner}, #{storeTel}, #{storeFax},
+         #{storeLatitude}, #{storeLongitude}, #{storeEndDate}, #{storeRegDate})
     </insert>
 
-    <update id="update" parameterType="Store">
+    <update id="insert" parameterType="Store">
+        UPDATE store SET storeStateType = 'REGISTER' WHERE storeId = #{storeId}
+    </update>
+
+    <update id="updateRequest" parameterType="Store">
         UPDATE store SET storeBusinessNum = #{storeBusinessNum},
         storeName = #{storeName}, storeTypeType = #{storeTypeType},
-        storeStateType = #{storeStateType}, storeAddress = #{storeAddress}, storeAddressDetail = #{storeAddressDetail},
+        storeStateType = 'UPDATE_REQ', storeAddress = #{storeAddress}, storeAddressDetail = #{storeAddressDetail},
         storeOwner = #{storeOwner}, storeTel = #{storeTel}, storeFax = #{storeFax},
         storeLatitude = #{storeLatitude}, storeLongitude = #{storeLongitude}
         WHERE storeId = #{storeId}
     </update>
 
+    <update id="update" parameterType="Store">
+        UPDATE store SET storeStateType = 'REGISTER' WHERE storeId = #{storeId}
+    </update>
+
+    <update id="deleteRequest" parameterType="Store">
+        UPDATE store SET storeStateType = 'DELETE_REQ' WHERE storeId = #{storeId}
+    </update>
+
     <update id="delete" parameterType="Store">
-        UPDATE store SET storeEndDate = #{storeEndDate} WHERE storeId = #{storeId}
+        UPDATE store SET storeEndDate = CURRENT_TIMESTAMP, storeStateType = 'DELETED' WHERE storeId = #{storeId}
     </update>
 
     <select id="view" parameterType="Store" resultType="Store">
         SELECT * FROM store WHERE storeId = #{storeId}
     </select>
 
-    <select id="list" parameterType="Query" resultType="java.util.List">
-        SELECT * FROM store WHERE #{condition} = #{intWord}
+    <select id="listByString" parameterType="Query" resultType="java.util.List">
+        SELECT * FROM store WHERE #{condition} = #{word}
     </select>
 
-
-
-
+    <select id="listByInteger" parameterType="Query" resultType="java.util.List">
+        SELECT * FROM store WHERE #{condition} = #{intWord}
+    </select>
 </mapper>

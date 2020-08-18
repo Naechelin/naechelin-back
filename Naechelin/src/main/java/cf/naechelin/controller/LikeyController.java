@@ -33,6 +33,7 @@ public class LikeyController
 
     @RequestMapping(value="store/{storeId}/like", method = RequestMethod.POST)
     public void insert(HttpSession session, @PathVariable("storeId") int storeId, Model model){
+        if(session == null) { return; }
         int memberId = Integer.parseInt(session.getAttribute("memberId").toString());
         insertService.doService(memberId,storeId);
         model.addAttribute("관심 목록 추가");
@@ -40,6 +41,7 @@ public class LikeyController
 
     @RequestMapping(value="store/{storeId}/like", method = RequestMethod.DELETE)
     public void delete(HttpSession session, @PathVariable("storeId") int storeId,Model model){
+        if(session == null) { return; }
         int memberId = Integer.parseInt(session.getAttribute("memberId").toString());
         insertService.doService(memberId,storeId);
         model.addAttribute("관심 목록 삭제");
@@ -47,6 +49,7 @@ public class LikeyController
 
     @RequestMapping(value="likey/list", method = RequestMethod.GET)
     public void likeyList(HttpSession session,Model model){
+        if(session == null) { return; }
         List<StoreVO> list = new ArrayList<>();
         String memberId = session.getAttribute("memberId").toString();
         listService.doService("member_id",memberId+"");

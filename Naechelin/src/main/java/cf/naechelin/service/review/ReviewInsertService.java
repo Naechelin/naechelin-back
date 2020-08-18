@@ -5,5 +5,5 @@ import cf.naechelin.vo.ReviewVO;
 
 public interface ReviewInsertService
 {
-    void doService(ReviewVO review) throws ReviewException;
+    void doService(int memberId, ReviewVO review) throws ReviewException;
 }

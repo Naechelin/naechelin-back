@@ -4,13 +4,17 @@ public class NaechelinStarVO
 {
     int storeId;
     int reviewRating;
+    int storeLatitude;
+    int storeLongitude;
 
     public NaechelinStarVO(){}
 
-    public NaechelinStarVO(int storeId, int reviewRating)
+    public NaechelinStarVO(int storeId, int reviewRating, int storeLatitude, int storeLongitude)
     {
         this.storeId = storeId;
         this.reviewRating = reviewRating;
+        this.storeLatitude = storeLatitude;
+        this.storeLongitude = storeLongitude;
     }
 
     public int getStoreId()
@@ -33,4 +37,23 @@ public class NaechelinStarVO
         this.reviewRating = reviewRating;
     }
 
+    public int getStoreLatitude()
+    {
+        return storeLatitude;
+    }
+
+    public void setStoreLatitude(int storeLatitude)
+    {
+        this.storeLatitude = storeLatitude;
+    }
+
+    public int getStoreLongitude()
+    {
+        return storeLongitude;
+    }
+
+    public void setStoreLongitude(int storeLongitude)
+    {
+        this.storeLongitude = storeLongitude;
+    }
 }

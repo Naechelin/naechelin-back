@@ -164,6 +164,13 @@
    			<artifactId>javase</artifactId>
     			<version>3.4.0</version>
 		</dependency>
+		
+		<!-- jQuery -->
+		<dependency>
+		    <groupId>org.webjars.bower</groupId>
+		    <artifactId>jquery</artifactId>
+		    <version>3.5.1</version>
+		</dependency>
 	</dependencies>
     <build>
         <plugins>
