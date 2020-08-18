@@ -7,19 +7,20 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% %>
 <html>
 <head>
     <title>Title</title>
     <script src="resources/jquery-3.5.0.min.js"></script>
     <script>
         $(document).ready(function () {
-            //jQuery 는 여기에..경안짱
+
         })
     </script>
 </head>
 <body>
 <c:forEach var="list" items="${list}">
-    ${list.storeId} :  ${list.reviewPac} :  ${list.reviewRating}
+    ${list.storeId} :  ${list.reviewPac} :  ${list.reviewRating} <input type="button" id="delete${list.storeId}" value="삭제" param-value="${list}" /><br>
 </c:forEach>
 </body>
 </html>

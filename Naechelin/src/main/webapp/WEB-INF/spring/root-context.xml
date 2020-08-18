@@ -27,7 +27,7 @@
                 <value>classpath:Mapper/storeMapper.xml</value>
 				<value>classpath:Mapper/storeTypeMapper.xml</value>
 				<value>classpath:Mapper/storeStateMapper.xml</value>
-<!--				<value>classpath:Mapper/policyMapper.xml</value>-->
+				<value>classpath:Mapper/policyMapper.xml</value>
 				<value>classpath:Mapper/missionMapper.xml</value>
 				<value>classpath:Mapper/couponMapper.xml</value>
 			</list>
@@ -45,6 +45,11 @@
     
 	<bean id="storeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="cf.naechelin.mapper.StoreMapper"/>
+		<property name="sqlSessionTemplate" ref="sqlSession"/>
+	</bean>
+
+	<bean id="storeStateMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cf.naechelin.mapper.StoreStateMapper"/>
 		<property name="sqlSessionTemplate" ref="sqlSession"/>
 	</bean>
 
@@ -90,6 +95,11 @@
 
 	<bean id="reviewMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="cf.naechelin.mapper.ReviewMapper"/>
+		<property name="sqlSessionTemplate" ref="sqlSession"/>
+	</bean>
+
+	<bean id="policyMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cf.naechelin.mapper.PolicyMapper"/>
 		<property name="sqlSessionTemplate" ref="sqlSession"/>
 	</bean>
 </beans>

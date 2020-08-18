@@ -17,16 +17,16 @@
         SELECT * FROM review WHERE storeId=#{intWord}
     </select>
     <select id="myNaechelinList" parameterType="Query" resultType="Naechelin">
-        SELECT reviewRating-5, storeLatitude,storeLongitude FROM store INNER JOIN (SELECT storeId,reviewRating FROM review INNER JOIN line USING(lineId) WHERE reviewRating <![CDATA[ > ]]> 5 AND memberId = #{memberId}) AS A USING(storeId);
+        SELECT reviewRating-5, storeLatitude,storeLongitude FROM store INNER JOIN (SELECT storeId,reviewRating FROM review INNER JOIN line USING(lineId) WHERE reviewRating <![CDATA[ > ]]> 5 AND memberId = #{memberId}) AS A USING(storeId)
     </select>
     <select id="guideList" resultType="Naechelin">
-        SELECT storeId,b.reviewRating as reviewRating,storeLatitude,storeLongitude FROM store INNER JOIN ( SELECT storeId,avg(reviewRating) as reviewRating FROM review GROUP BY storeId ) AS b USING (storeId) WHERE reviewRating <![CDATA[ > ]]> 5;
+        SELECT storeId,b.reviewRating as reviewRating,storeLatitude,storeLongitude FROM store INNER JOIN ( SELECT storeId,avg(reviewRating) as reviewRating FROM review GROUP BY storeId ) AS b USING (storeId) WHERE reviewRating <![CDATA[ > ]]> 5
     </select>
-    <select id="insertCheck" parameterType="Query" resultType="Mission">
-        SELECT lineId, storeId, missionOrder, missionSuccessTime FROM line INNER JOIN mission USING(lineId) WHERE lineId IN (#{word}) AND storeId=#{intWord} ORDER BY missionSuccessTime DESC;
+    <select id="insertCheck" parameterType="Review" resultType="Mission">
+        SELECT lineId, storeId, missionOrder, missionSuccessTime FROM line INNER JOIN mission USING(lineId) WHERE lineId=#{lineId} AND storeId=#{storeId} ORDER BY missionSuccessTime DESC limit 1
     </select>
     <select id="findLineId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
-        SELECT lineId FROM line WHERE memberId=#{memberId}
+        SELECT lineId FROM line WHERE memberId=#{memberId} ORDER BY lineCreateTime DESC limit 1
     </select>
     <update id="reviewEdit" parameterType="Review">
         UPDATE review set reviewPac=#{reviewPac},reviewRating=#{reviewRating},reviewPhoto=#{reviewPhoto} WHERE lineId=#{lineId AND storeId=#{storeId}

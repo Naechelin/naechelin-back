@@ -20,24 +20,14 @@ public class ReviewDeleteServiceImpl implements ReviewDeleteService
     public void doService(int memberId, int storeId)throws ReviewException
     {
         ReviewVO review = new ReviewVO();
-        int lastLineNum=0;
-        ArrayList<Integer> lineList = reviewDAO.findLineId(memberId);
-        StringBuilder sb = new StringBuilder();
-        for(Integer num : lineList){
-            sb.append(num+",");
-            lastLineNum = num;
-        }
-        if(sb == null) { return ;}
-        sb.deleteCharAt(sb.length());
-        QueryVO query = new QueryVO();
-        query.setWord(sb.toString());
-        query.setIntWord(review.getStoreId());
-        MissionVO missionVO = reviewDAO.insertCheck(query);
+        review.setLineId(reviewDAO.findLineId(memberId));
+        review.setStoreId(storeId);
+        MissionVO missionVO = reviewDAO.insertCheck(review);
+
         if(missionVO.getMissionSuccessTime() == null){
             throw new ReviewException("리뷰 삭제 실패, 먼저 방문해 주세요.");
         }
-        review.setLineId(lastLineNum);
-        review.setStoreId(storeId);
+
         reviewDAO.delete(review);
     }
 }
