@@ -24,4 +24,7 @@
     <select id="list" resultType="Member">
         SELECT * FROM member ORDER BY memberEmail
     </select>
+    <select id="login" parameterType="java.lang.String" resultType="Member">
+        SELECT * FROM member WHERE memberEmail=#{memberEmail} AND memberPass=#{memberPass}
+    </select>
 </mapper>
