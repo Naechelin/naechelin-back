@@ -17,8 +17,8 @@
     </script>
 </head>
 <body>
-<a herf="review/1"> 리뷰작성</a>
-<a href="review/1/list"> 리스트 보기</a>
+<a href="/review/1"> 리뷰작성</a>
+<a href="/review/2/list"> 리스트 보기</a>
 
 </body>
 </html>
