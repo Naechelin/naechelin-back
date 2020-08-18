@@ -1,15 +1,15 @@
 package cf.naechelin.controller;
 
 import cf.naechelin.service.question.*;
+import cf.naechelin.vo.AnswerVO;
+import cf.naechelin.vo.QuestionVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/question")
@@ -29,11 +29,15 @@ public class QuestionController
 
     @Autowired
     @Qualifier("questionFindDetailService")
-    QuestionFindDetailService questionFineDetailService;
+    QuestionFindDetailService questionFindDetailService;
 
     @Autowired
     @Qualifier("questionFindListService")
     QuestionFindListService questionFindListService;
+
+    @Autowired
+    @Qualifier("questionInsertService")
+    QuestionInsertService questionInsertService;
 
     @Autowired
     @Qualifier("questionUpdateService")
@@ -46,39 +50,66 @@ public class QuestionController
     }
 
     @RequestMapping(method=RequestMethod.POST)
-    public String insert(HttpSession session)
+    public String insert(@ModelAttribute("questionInfo") QuestionVO question, Model model)
     {
-        return "insert";
+        if(question.getQuestionTitle().trim().equals(""))
+        {
+            model.addAttribute("errorMessage", "문의글 제목을 입력하지 않으셨습니다.");
+            return "question/insert";
+        }
+
+        if(question.getQuestionContent().trim().equals(""))
+        {
+            model.addAttribute("errorMessage", "문의글 내용을 입력하지 않으셨습니다.");
+            return "question/insert";
+        }
+
+        questionInsertService.doService(question);
+        return "question";
     }
 
     @RequestMapping(method=RequestMethod.HEAD)
     public String update()
     {
-        return "update";
+        return "question";
     }
 
     @RequestMapping(method=RequestMethod.POST)
-    public String update(HttpSession session)
+    public String update(@ModelAttribute("questionInfo") QuestionVO question, Model model)
     {
-        return "update";
+        if(question.getQuestionTitle().trim().equals(""))
+        {
+            model.addAttribute("errorMessage", "문의글 제목을 입력하지 않으셨습니다.");
+            return "question/insert";
+        }
+
+        if(question.getQuestionContent().trim().equals(""))
+        {
+            model.addAttribute("errorMessage", "문의글 내용을 입력하지 않으셨습니다.");
+            return "question/insert";
+        }
+
+        questionUpdateService.doService(question);
+        return "question";
     }
 
     @RequestMapping(value="/{memberId}", method=RequestMethod.DELETE)
-    public String delete(HttpSession session, @PathVariable("questionId") int questionId)
+    public String delete(@ModelAttribute("questionInfo") QuestionVO question)
     {
-        return "delete";
+        questionDeleteService.doService(question);
+        return "question";
     }
 
     @RequestMapping(method=RequestMethod.GET)
-    public String findList(HttpSession session)
+    public void findList(@ModelAttribute("questionInfo") QuestionVO question)
     {
-        return "findList";
+        questionFindListService.doService(question);
     }
 
     @RequestMapping(value="/{questionId}", method=RequestMethod.GET)
-    public String findDetail(HttpSession session)
+    public void findDetail(@ModelAttribute("questionInfo") QuestionVO question)
     {
-        return "findDetail";
+        questionFindDetailService.doService(question);
     }
 
     @RequestMapping(value="/answer/{questionId}", method=RequestMethod.GET)
@@ -88,14 +119,22 @@ public class QuestionController
     }
 
     @RequestMapping(value="/answer/{questionId}", method=RequestMethod.POST)
-    public String answerInsert(HttpSession session)
+    public String answerInsert(@ModelAttribute("answerInfo") AnswerVO answer, Model model)
     {
-        return "answerInsert";
+        if(answer.getAnswerContent().trim().equals(""))
+        {
+            model.addAttribute("errorMessage", "답변 내용이 작성되지 않았습니다.");
+            return "answer/{questionId}";
+        }
+
+        questionAnswerInsertService.doService(answer);
+        return "answer";
     }
 
     @RequestMapping(value="/answer/{questionId}", method=RequestMethod.DELETE)
-    public String answerDelete(Model model)
+    public String answerDelete(@ModelAttribute("answerInfo") AnswerVO answer)
     {
-        return "answerDelete";
+        questionAnswerDeleteService.doService(answer);
+        return "answer";
     }
 }
