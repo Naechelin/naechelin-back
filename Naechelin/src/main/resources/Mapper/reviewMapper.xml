@@ -23,10 +23,10 @@
         SELECT storeId,b.reviewRating as reviewRating,storeLatitude,storeLongitude FROM store INNER JOIN ( SELECT storeId,avg(reviewRating) as reviewRating FROM review GROUP BY storeId ) AS b USING (storeId) WHERE reviewRating <![CDATA[ > ]]> 5
     </select>
     <select id="insertCheck" parameterType="Review" resultType="Mission">
-        SELECT lineId, storeId, missionOrder, missionSuccessTime FROM line INNER JOIN mission USING(lineId) WHERE lineId=#{lineId} AND storeId=#{storeId} ORDER BY lineSuccessTime DESC limit 1
+        SELECT lineId, storeId, missionOrder, missionSuccessTime FROM line INNER JOIN mission USING(lineId) WHERE lineId=#{lineId} AND storeId=#{storeId} ORDER BY missionSuccessTime DESC limit 1
     </select>
     <select id="findLineId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
-        SELECT lineId FROM line WHERE memberId=#{memberId} ORDER BY lineSuccessTime DESC limit 1
+        SELECT lineId FROM line WHERE memberId=#{memberId} ORDER BY lineCreateTime DESC limit 1
     </select>
     <update id="reviewEdit" parameterType="Review">
         UPDATE review set reviewPac=#{reviewPac},reviewRating=#{reviewRating},reviewPhoto=#{reviewPhoto} WHERE lineId=#{lineId AND storeId=#{storeId}
