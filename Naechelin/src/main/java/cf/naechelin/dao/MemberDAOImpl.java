@@ -35,6 +35,12 @@ public class MemberDAOImpl implements MemberDAO
     }
 
     @Override
+    public MemberVO login(String memberEmail, String memberPass) throws MemberException
+    {
+        return memberMapper.login(memberEmail, memberPass);
+    }
+
+    @Override
     public MemberVO selectByMemberEmail(String memberEmail) throws MemberException
     {
         return memberMapper.selectByMemberEmail(memberEmail);
@@ -51,4 +57,5 @@ public class MemberDAOImpl implements MemberDAO
     {
         return memberMapper.list();
     }
+
 }
