@@ -1,6 +1,8 @@
 package cf.naechelin.dao;
 
+import cf.naechelin.mapper.MissionMapper;
 import cf.naechelin.vo.MissionVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.awt.image.BufferedImage;
@@ -9,10 +11,13 @@ import java.util.List;
 @Repository("MissionDAO")
 public class MissionDAOImpl implements MissionDAO
 {
+    @Autowired
+    private MissionMapper mapper;
+
     @Override
     public void insert(MissionVO mission)
     {
-
+        mapper.insert(mission);
     }
 
     @Override
@@ -22,9 +27,9 @@ public class MissionDAOImpl implements MissionDAO
     }
 
     @Override
-    public void delete(MissionVO mission)
+    public void deleteByLineId(int lineId)
     {
-
+        mapper.deleteByLineId(lineId);
     }
 
     @Override

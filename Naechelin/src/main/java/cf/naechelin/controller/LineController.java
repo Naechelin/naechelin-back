@@ -1,10 +1,14 @@
 package cf.naechelin.controller;
 
+import cf.naechelin.service.line.LineDeleteService;
+import cf.naechelin.service.line.LineInsertService;
 import cf.naechelin.service.line.LineListService;
-import cf.naechelin.service.line.LineService;
+import cf.naechelin.service.line.LineViewService;
+import cf.naechelin.vo.LineCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,47 +21,63 @@ import javax.servlet.http.HttpSession;
 public class LineController
 {
     @Autowired
+    @Qualifier("LineInsert")
+    private LineInsertService insertService;
+    @Autowired
+    @Qualifier("LineDelete")
+    private LineDeleteService deleteService;
+    @Autowired
+    @Qualifier("LineView")
+    private LineViewService viewService;
+    @Autowired
     @Qualifier("LineList")
     private LineListService listService;
 
-    @RequestMapping(method = RequestMethod.HEAD)
-    public String insert()
+    // 라인 생성 폼
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String insert(Model model)
     {
-        return "insert";
+        LineCommand lineCommand = new LineCommand();
+        model.addAttribute("lineCommand", lineCommand);
+        return "addLine";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public String insert(HttpSession session)
+    // 라인 생성
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String insert(LineCommand lineCommand, HttpSession session)
     {
-        return "insert";
-    }
+        // 유효성 검사
+//        lineCommand.setMemberId((int)session.getAttribute("memberId"));
+        insertService.doService(lineCommand);
 
-    /*
-    public String update(HttpSession session)
-    {
-        return "update";
+        // 다시 리스트로 보냄
+        return "redirect:/line";
     }
-    */
 
     @RequestMapping(value = "/{lineId}", method = RequestMethod.DELETE)
     public String delete(@PathVariable("lineId") int lineId, HttpSession session)
     {
-        return "delete";
+        deleteService.doService(lineId);
+        return "redirect:/line";
+    }
+
+    @RequestMapping(value = "/{lineId}", method = RequestMethod.GET)
+    public ModelAndView view(@PathVariable("lineId") int lineId, HttpSession session)
+    {
+        ModelAndView view = new ModelAndView();
+
+        view.setViewName("view");
+        view.addObject("line", viewService.doService(lineId));
+        return view;
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView view(HttpSession session)
+    public ModelAndView list(HttpSession session)
     {
         ModelAndView view = new ModelAndView();
 
         view.setViewName("line");
         view.addObject("lineList", listService.doService());
         return view;
-    }
-
-    @RequestMapping(value = "/history", method = RequestMethod.GET)
-    public String list(HttpSession session)
-    {
-        return "list";
     }
 }

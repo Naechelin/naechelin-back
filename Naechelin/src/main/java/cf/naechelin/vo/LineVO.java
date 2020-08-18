@@ -1,5 +1,6 @@
 package cf.naechelin.vo;
 
+import java.awt.image.BufferedImage;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +13,22 @@ public class LineVO
     private CouponVO coupon;
     private MemberVO member;
     private List<MissionVO> missionList;
+    private MissionVO nextMission;
+    private BufferedImage QR;
+
+    public LineVO() {}
+
+    public LineVO(int lineId, int memberId, Timestamp lineCreateTime, CouponVO coupon, MemberVO member, List<MissionVO> missionList, MissionVO nextMission, BufferedImage QR)
+    {
+        this.lineId = lineId;
+        this.memberId = memberId;
+        this.lineCreateTime = lineCreateTime;
+        this.coupon = coupon;
+        this.member = member;
+        this.missionList = missionList;
+        this.nextMission = nextMission;
+        this.QR = QR;
+    }
 
     public int getLineId()
     {
@@ -73,6 +90,26 @@ public class LineVO
         this.missionList = missionList;
     }
 
+    public MissionVO getNextMission()
+    {
+        return nextMission;
+    }
+
+    public void setNextMission(MissionVO nextMission)
+    {
+        this.nextMission = nextMission;
+    }
+
+    public BufferedImage getQR()
+    {
+        return QR;
+    }
+
+    public void setQR(BufferedImage QR)
+    {
+        this.QR = QR;
+    }
+
     @Override
     public boolean equals(Object o)
     {
@@ -100,6 +137,7 @@ public class LineVO
                 ", coupon=" + coupon +
                 ", member=" + member +
                 ", missionList=" + missionList +
+                ", nextMission=" + nextMission +
                 '}';
     }
 
@@ -107,12 +145,14 @@ public class LineVO
     {
         HashMap<String, Object> map = new HashMap<>();
 
-        map.put("lineId", lineId);
+        map.put("lineid", lineId);
         map.put("memberId", memberId);
         map.put("lineCreateTime", lineCreateTime);
         map.put("coupon", coupon);
         map.put("member", member);
         map.put("missionList", missionList);
+        map.put("nextMission", nextMission);
+        map.put("QR", QR);
 
         return map;
     }

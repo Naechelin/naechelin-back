@@ -1,10 +1,13 @@
 package cf.naechelin.controller;
 
-import cf.naechelin.service.coupon.CouponService;
+import cf.naechelin.service.coupon.CouponListService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,7 +15,9 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/coupon")
 public class CouponController
 {
-    private CouponService service;
+    @Autowired
+    @Qualifier("CouponList")
+    private CouponListService listService;
 
     public CouponController() {}
 
@@ -29,9 +34,12 @@ public class CouponController
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String list(HttpSession session)
+    public ModelAndView list(HttpSession session)
     {
-        return "list";
+        ModelAndView view = new ModelAndView();
+        view.setViewName("coupon");
+        view.addObject("couponList", listService.doService());
+        return view;
     }
 
     @RequestMapping(method = RequestMethod.HEAD)
