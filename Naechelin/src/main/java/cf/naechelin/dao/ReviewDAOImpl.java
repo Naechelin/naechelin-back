@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 
+import javax.management.Query;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class ReviewDAOImpl implements ReviewDAO
     @Override
     public void insert(ReviewVO review) throws ReviewException
     {
+        System.out.println(review.getReviewPac() +":"+ review.getReviewRating());
         reviewMapper.insert(review);
     }
 
@@ -61,13 +63,13 @@ public class ReviewDAOImpl implements ReviewDAO
     }
 
     @Override
-    public MissionVO insertCheck(ReviewVO review) throws ReviewException
+    public MissionVO insertCheck(QueryVO query) throws ReviewException
     {
-        return reviewMapper.insertCheck(review);
+        return reviewMapper.insertCheck(query);
     }
 
     @Override
-    public int findLineId(int memberId) throws ReviewException
+    public ArrayList<Integer> findLineId(int memberId) throws ReviewException
     {
         return reviewMapper.findLineId(memberId);
     }
