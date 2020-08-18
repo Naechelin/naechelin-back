@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/question")
 public class QuestionController
 {
     @Autowired
@@ -43,13 +42,13 @@ public class QuestionController
     @Qualifier("questionUpdateService")
     QuestionUpdateService questionUpdateService;
 
-    @RequestMapping(method=RequestMethod.PUT)
+    @RequestMapping(value="/question", method=RequestMethod.GET)
     public String insert()
     {
         return "question/insert";
     }
 
-    @RequestMapping(method=RequestMethod.POST)
+    @RequestMapping(value="/question", method=RequestMethod.POST)
     public String insert(@ModelAttribute("questionInfo") QuestionVO question, Model model)
     {
         if(question.getQuestionTitle().trim().equals(""))
@@ -68,13 +67,13 @@ public class QuestionController
         return "question";
     }
 
-    @RequestMapping(method=RequestMethod.HEAD)
+    @RequestMapping(value="question/update", method=RequestMethod.GET)
     public String update()
     {
         return "question";
     }
 
-    @RequestMapping(method=RequestMethod.POST)
+    @RequestMapping(value="question/update", method=RequestMethod.PUT)
     public String update(@ModelAttribute("questionInfo") QuestionVO question, Model model)
     {
         if(question.getQuestionTitle().trim().equals(""))
@@ -93,7 +92,7 @@ public class QuestionController
         return "question";
     }
 
-    @RequestMapping(value="/{memberId}", method=RequestMethod.DELETE)
+    @RequestMapping(value="question/{memberId}", method=RequestMethod.DELETE)
     public String delete(@ModelAttribute("questionInfo") QuestionVO question)
     {
         questionDeleteService.doService(question);
@@ -106,19 +105,19 @@ public class QuestionController
         questionFindListService.doService(question);
     }
 
-    @RequestMapping(value="/{questionId}", method=RequestMethod.GET)
+    @RequestMapping(value="question/{questionId}", method=RequestMethod.GET)
     public void findDetail(@ModelAttribute("questionInfo") QuestionVO question)
     {
         questionFindDetailService.doService(question);
     }
 
-    @RequestMapping(value="/answer/{questionId}", method=RequestMethod.GET)
+    @RequestMapping(value="answer/{questionId}", method=RequestMethod.GET)
     public String answerInsert()
     {
         return "answer";
     }
 
-    @RequestMapping(value="/answer/{questionId}", method=RequestMethod.POST)
+    @RequestMapping(value="answer/{questionId}", method=RequestMethod.POST)
     public String answerInsert(@ModelAttribute("answerInfo") AnswerVO answer, Model model)
     {
         if(answer.getAnswerContent().trim().equals(""))
@@ -131,7 +130,7 @@ public class QuestionController
         return "answer";
     }
 
-    @RequestMapping(value="/answer/{questionId}", method=RequestMethod.DELETE)
+    @RequestMapping(value="answer/{questionId}", method=RequestMethod.DELETE)
     public String answerDelete(@ModelAttribute("answerInfo") AnswerVO answer)
     {
         questionAnswerDeleteService.doService(answer);
