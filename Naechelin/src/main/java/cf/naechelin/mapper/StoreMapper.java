@@ -1,8 +1,10 @@
 package cf.naechelin.mapper;
 
 import cf.naechelin.exception.store.StoreException;
+import cf.naechelin.vo.MissionVO;
 import cf.naechelin.vo.QueryVO;
 import cf.naechelin.vo.StoreVO;
+import cf.naechelin.vo.VisitVO;
 
 import java.awt.*;
 import java.util.List;
@@ -18,4 +20,6 @@ public interface StoreMapper
     void insertRequest(StoreVO store) throws StoreException;
     void updateRequest(StoreVO store) throws StoreException;
     void deleteRequest(StoreVO store) throws StoreException;
+
+    List<VisitVO> howManyVisits(StoreVO store) throws StoreException;
 }

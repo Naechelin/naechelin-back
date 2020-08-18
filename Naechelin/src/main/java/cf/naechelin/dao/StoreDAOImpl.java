@@ -2,8 +2,10 @@ package cf.naechelin.dao;
 
 import cf.naechelin.exception.store.StoreException;
 import cf.naechelin.mapper.StoreMapper;
+import cf.naechelin.vo.MissionVO;
 import cf.naechelin.vo.QueryVO;
 import cf.naechelin.vo.StoreVO;
+import cf.naechelin.vo.VisitVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -67,5 +69,11 @@ public class StoreDAOImpl implements StoreDAO
     public void deleteRequest(StoreVO store) throws StoreException
     {
         mapper.deleteRequest(store);
+    }
+
+    @Override
+    public List<VisitVO> howManyVisits(StoreVO store) throws StoreException
+    {
+        return mapper.howManyVisits(store);
     }
 }

@@ -22,5 +22,6 @@
         <typeAlias type="cf.naechelin.vo.CouponVO" alias="Coupon"/>
         <typeAlias type="cf.naechelin.vo.ReviewVO" alias="Review"/>
         <typeAlias type="cf.naechelin.vo.NaechelinStarVO" alias="Naechelin"/>
+        <typeAlias type="cf.naechelin.vo.VisitVO" alias="Visit"/>
     </typeAliases>
 </configuration>
