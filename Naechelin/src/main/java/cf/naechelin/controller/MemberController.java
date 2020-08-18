@@ -112,7 +112,7 @@ public class MemberController
         return "member/login";
     }
 
-    @RequestMapping(value="/signup", method=RequestMethod.HEAD)
+    @RequestMapping(value="/signup/form", method=RequestMethod.GET)
     public String update()
     {
         return "member/update";
