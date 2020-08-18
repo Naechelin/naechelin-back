@@ -46,4 +46,8 @@
     <select id="listByInteger" parameterType="Query" resultType="java.util.List">
         SELECT * FROM store WHERE #{condition} = #{intWord}
     </select>
+
+    <select id="howManyVisits" parameterType="Store" resultType="Visit">
+       SELECT storeId, missionSuccessTime from  store inner join mission using (storeId) where missionSuccessTime > current_date() and storeId = #{storeId};
+    </select>
 </mapper>

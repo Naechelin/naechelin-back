@@ -5,6 +5,7 @@ import cf.naechelin.service.store.*;
 import cf.naechelin.vo.MemberVO;
 import cf.naechelin.vo.QueryVO;
 import cf.naechelin.vo.StoreVO;
+import cf.naechelin.vo.VisitVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -45,6 +46,10 @@ public class StoreController
     @Qualifier("storeListByIntegerService")
     StoreListByIntegerService storeListByIntegerService;
 
+    @Autowired
+    @Qualifier("storeHowManyVisitsService")
+    StoreHowManyVisitsService storeHowManyVisitsService;
+
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String insertRequest(HttpSession session, Model model)
     {
@@ -52,7 +57,7 @@ public class StoreController
         if(member == null) {return "login"; }
         StoreVO store = new StoreVO();
         store.setMember(member);
-        model.addAttribute(store);
+        model.addAttribute("store", store);
         return "owner/registerForm";
     }
 
@@ -81,7 +86,7 @@ public class StoreController
         try
         {
             StoreVO store = storeViewService.doService(storeId);
-            model.addAttribute(store);
+            model.addAttribute("store", store);
         }
         catch (StoreException e)
         {
@@ -100,7 +105,7 @@ public class StoreController
         try
         {
             storeUpdateRequestService.doService(store);
-            model.addAttribute(store);
+            model.addAttribute("store", store);
         }
         catch(StoreException e)
         {
@@ -139,7 +144,10 @@ public class StoreController
         try
         {
             StoreVO store = storeViewService.doService(storeId);
-            model.addAttribute(store);
+            model.addAttribute("store",store);
+            List<VisitVO> visits = storeHowManyVisitsService.doService(store);
+            int num = visits.size();
+            model.addAttribute("visits",num);
         }
         catch(StoreException e)
         {
@@ -160,7 +168,7 @@ public class StoreController
         {
             QueryVO query = new QueryVO("memberId", member.getMemberId()+"");
             List<StoreVO> storeList = storeListByStringService.doService(query);
-            model.addAttribute(storeList);
+            model.addAttribute("storeList", storeList);
         }
         catch(StoreException e)
         {
