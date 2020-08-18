@@ -15,8 +15,8 @@ public class MemberLoginServiceImpl implements MemberLoginService
     private MemberDAO dao;
 
     @Override
-    public void doService(MemberVO member) throws MemberException
+    public MemberVO doService(String memberEmail, String memberPass) throws MemberException
     {
-        dao.selectByMemberEmail(member.getMemberEmail());
+        return dao.login(memberEmail, memberPass);
     }
 }
