@@ -63,13 +63,13 @@ public class ReviewDAOImpl implements ReviewDAO
     }
 
     @Override
-    public MissionVO insertCheck(QueryVO query) throws ReviewException
+    public MissionVO insertCheck(ReviewVO review) throws ReviewException
     {
-        return reviewMapper.insertCheck(query);
+        return reviewMapper.insertCheck(review);
     }
 
     @Override
-    public ArrayList<Integer> findLineId(int memberId) throws ReviewException
+    public int findLineId(int memberId) throws ReviewException
     {
         return reviewMapper.findLineId(memberId);
     }

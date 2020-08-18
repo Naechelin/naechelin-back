@@ -8,36 +8,35 @@ import cf.naechelin.vo.ReviewVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 @Service("reviewUpdateService")
 public class ReviewUpdateServiceImpl implements ReviewUpdateService
 {
     @Autowired
-    ReviewDAO reviewDAO;
+    ReviewDAO reviewDao;
 
     @Override
     public void doService(int memberId, int storeId) throws ReviewException
     {
+        int lineId = reviewDao.findLineId(memberId);
         ReviewVO review = new ReviewVO();
-        int lastLineNum=0;
-        ArrayList<Integer> lineList = reviewDAO.findLineId(memberId);
-        StringBuilder sb = new StringBuilder();
-        for(Integer num : lineList){
-            sb.append(num+",");
-            lastLineNum = num;
-        }
-        if(sb == null) { return ;}
-        sb.deleteCharAt(sb.length());
-        QueryVO query = new QueryVO();
-        query.setWord(sb.toString());
-        query.setIntWord(review.getStoreId());
-        MissionVO missionVO = reviewDAO.insertCheck(query);
-        if(missionVO.getMissionSuccessTime() == null){
-            throw new ReviewException("리뷰 수정 실패, 먼저 방문해 주세요.");
-        }
-        review.setLineId(lastLineNum);
+        review.setLineId(lineId);
         review.setStoreId(storeId);
-        reviewDAO.reviewEdit(review);
+
+        MissionVO mission = reviewDao.insertCheck(review);
+        if(mission == null){
+            throw new ReviewException("리뷰 작성 실패, 먼저 방문해 주세요.");
+        }
+
+        Timestamp successTime = mission.getMissionSuccessTime();
+        Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+        long hour = currentTime.getTime() - successTime.getTime();
+
+        if((hour/3600000) >= 24){
+            throw new ReviewException("리뷰 작성/제출은 방문 24시간 이내에 가능 합니다.");
+        }
+        reviewDao.reviewEdit(review);
     }
 }
