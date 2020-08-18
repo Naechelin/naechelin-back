@@ -3,7 +3,9 @@ package cf.naechelin.service.member;
 import cf.naechelin.exception.MemberException;
 import cf.naechelin.vo.MemberVO;
 
-public interface MemberLoginService extends MemberService
+import javax.servlet.http.HttpSession;
+
+public interface MemberLoginService
 {
-    void doService(MemberVO member) throws MemberException;
+    MemberVO doService (String memberEmail, String memberPass) throws MemberException;
 }
