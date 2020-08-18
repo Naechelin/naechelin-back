@@ -64,6 +64,7 @@ public class ReivewController
 //            return "review/error";
 //        }
 //        int memberId = Integer.parseInt(mStr);
+
         int memberId = Integer.parseInt(request.getParameter("writer"));// 나중에 지우기
         int reviewRating = Integer.parseInt(request.getParameter("reviewRating"));
         String reviewPhoto = request.getParameter("reviewPhoto");
