@@ -12,6 +12,15 @@ public class MissionVO
     private LineVO line;
     private StoreVO store;
 
+    public MissionVO() {}
+
+    public MissionVO(int lineId, int storeId, int missionOrder)
+    {
+        this.lineId = lineId;
+        this.storeId = storeId;
+        this.missionOrder = missionOrder;
+    }
+
     public int getLineId()
     {
         return lineId;

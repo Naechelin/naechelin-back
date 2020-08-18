@@ -3,7 +3,7 @@ package cf.naechelin.service.question;
 import cf.naechelin.exception.QuestionException;
 import cf.naechelin.vo.QuestionVO;
 
-public interface QuestionFindDetailService extends QuestionService
+public interface QuestionFindDetailService
 {
     void doService(QuestionVO question) throws QuestionException;
 }

@@ -9,7 +9,7 @@ public interface LineMapper
 {
     void insert(LineVO line);
     void update(LineVO line);
-    void delete(LineVO line);
-    LineVO view(LineVO line);
+    void delete(int lineId);
+    LineVO view(int lineId);
     List<LineVO> list(QueryVO query);
 }

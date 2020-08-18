@@ -17,17 +17,19 @@
 		<property name="configLocation" value="classpath:mybatisConfiguration.xml"/>
 		<property name="mapperLocations">
 			<list>
-				<value>classpath:reviewMapper.xml</value>
-				<value>classpath:likeyMapper.xml</value>
-				<value>classpath:memberMapper.xml</value>
-				<value>classpath:memberTypeMapper.xml</value>
-				<value>classpath:questionMapper.xml</value>
-				<value>classpath:answerMapper.xml</value>
-				<value>classpath:lineMapper.xml</value>
-                <value>classpath:storeMapper.xml</value>
-				<value>classpath:storeTypeMapper.xml</value>
-				<value>classpath:storeStateMapper.xml</value>
-<!--				<value>classpath:policyMapper.xml</value>-->
+				<value>classpath:Mapper/reviewMapper.xml</value>
+				<value>classpath:Mapper/likeyMapper.xml</value>
+				<value>classpath:Mapper/memberMapper.xml</value>
+				<value>classpath:Mapper/memberTypeMapper.xml</value>
+				<value>classpath:Mapper/questionMapper.xml</value>
+				<value>classpath:Mapper/answerMapper.xml</value>
+				<value>classpath:Mapper/lineMapper.xml</value>
+                <value>classpath:Mapper/storeMapper.xml</value>
+				<value>classpath:Mapper/storeTypeMapper.xml</value>
+				<value>classpath:Mapper/storeStateMapper.xml</value>
+<!--				<value>classpath:Mapper/policyMapper.xml</value>-->
+				<value>classpath:Mapper/missionMapper.xml</value>
+				<value>classpath:Mapper/couponMapper.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -50,17 +52,7 @@
 		<property name="mapperInterface" value="cf.naechelin.mapper.StoreTypeMapper"/>
 		<property name="sqlSessionTemplate" ref="sqlSession"/>
 	</bean>
-
-	<bean id="storeStateMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="cf.naechelin.mapper.StoreStateMapper"/>
-		<property name="sqlSessionTemplate" ref="sqlSession"/>
-	</bean>
-
-<!--	<bean id="policyMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
-<!--		<property name="mapperInterface" value="cf.naechelin.mapper.PolicyMapper"/>-->
-<!--		<property name="sqlSessionTemplate" ref="sqlSession"/>-->
-<!--	</bean>-->
-
+	
 	<bean id="memberMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="cf.naechelin.mapper.MemberMapper"/>
 		<property name="sqlSessionTemplate" ref="sqlSession"/>
@@ -83,6 +75,11 @@
 
 	<bean id="lineMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="cf.naechelin.mapper.LineMapper"/>
+		<property name="sqlSessionTemplate" ref="sqlSession"/>
+	</bean>
+
+	<bean id="missionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cf.naechelin.mapper.MissionMapper"/>
 		<property name="sqlSessionTemplate" ref="sqlSession"/>
 	</bean>
 
