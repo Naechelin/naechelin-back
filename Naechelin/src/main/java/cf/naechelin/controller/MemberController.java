@@ -112,13 +112,13 @@ public class MemberController
         return "member/login";
     }
 
-    @RequestMapping(value="/signup", method=RequestMethod.PUT)
+    @RequestMapping(value="/signup/form", method=RequestMethod.GET)
     public String update()
     {
         return "member/update";
     }
 
-    @RequestMapping(value="/signup", method=RequestMethod.POST)
+    @RequestMapping(value="/signup", method=RequestMethod.PUT)
     public String update(@ModelAttribute("info") MemberVO member, Model model)
     {
         if(member.getMemberEmail().trim().equals(""))

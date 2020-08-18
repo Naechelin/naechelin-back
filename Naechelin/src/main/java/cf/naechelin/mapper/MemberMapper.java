@@ -12,4 +12,5 @@ public interface MemberMapper {
     MemberVO selectByMemberEmail(String memberEmail) throws MemberException;
     MemberVO selectByMemberNick(String memberNick) throws  MemberException;
     List<MemberVO> list() throws MemberException;
+    MemberVO login(String memberEmail, String memberPass) throws MemberException;
 }

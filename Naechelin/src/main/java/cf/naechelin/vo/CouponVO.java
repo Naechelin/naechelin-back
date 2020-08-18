@@ -1,5 +1,6 @@
 package cf.naechelin.vo;
 
+import java.awt.image.BufferedImage;
 import java.sql.Timestamp;
 import java.util.HashMap;
 
@@ -12,11 +13,11 @@ public class CouponVO
     private LineVO line;
     private MemberVO member;
     private StoreVO couponUsedStore;
+    private BufferedImage QR;
 
     public CouponVO() {}
 
-    public CouponVO(int lineId, int memberId, int couponUsedStoreId, Timestamp couponStart,
-                    LineVO line, MemberVO member, StoreVO couponUsedStore)
+    public CouponVO(int lineId, int memberId, int couponUsedStoreId, Timestamp couponStart, LineVO line, MemberVO member, StoreVO couponUsedStore, BufferedImage QR)
     {
         this.lineId = lineId;
         this.memberId = memberId;
@@ -25,6 +26,7 @@ public class CouponVO
         this.line = line;
         this.member = member;
         this.couponUsedStore = couponUsedStore;
+        this.QR = QR;
     }
 
     public int getLineId()
@@ -97,6 +99,16 @@ public class CouponVO
         this.couponUsedStore = couponUsedStore;
     }
 
+    public BufferedImage getQR()
+    {
+        return QR;
+    }
+
+    public void setQR(BufferedImage QR)
+    {
+        this.QR = QR;
+    }
+
     @Override
     public boolean equals(Object o)
     {
@@ -139,6 +151,7 @@ public class CouponVO
         map.put("line", line);
         map.put("member", member);
         map.put("couponUsedStore", couponUsedStore);
+        map.put("QR", QR);
 
         return map;
     }
