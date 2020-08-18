@@ -3,6 +3,7 @@ package cf.naechelin.controller;
 import cf.naechelin.exception.ReviewException;
 import cf.naechelin.service.review.*;
 import cf.naechelin.vo.NaechelinStarVO;
+import cf.naechelin.vo.ReviewVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -57,16 +58,27 @@ public class ReivewController
     @RequestMapping(value="review/{storeId}", method = RequestMethod.POST)
     public String insert(HttpServletRequest request, @PathVariable("storeId") int storeId)
     {
-        HttpSession session = request.getSession(false);
-        String mStr = (session.getAttribute("memberId")).toString();
-        if(mStr == null){
-            return "review/error";
-        }
-        int memberId = Integer.parseInt(mStr);
+//        HttpSession session = request.getSession(false);
+//        String mStr = (session.getAttribute("memberId")).toString();
+//        if(mStr == null){
+//            return "review/error";
+//        }
+//        int memberId = Integer.parseInt(mStr);
+        int memberId = Integer.parseInt(request.getParameter("writer"));// 나중에 지우기
+        int reviewRating = Integer.parseInt(request.getParameter("reviewRating"));
+        String reviewPhoto = request.getParameter("reviewPhoto");
+        String reviewPac = request.getParameter("revuewPac");
 
+        ReviewVO review = new ReviewVO();
+        if(reviewPhoto!= null){
+            review.setReviewPhoto(reviewPhoto);
+        }
+        review.setStoreId(storeId);
+        review.setReviewPac(reviewPac);
+        review.setReviewRating(reviewRating);
         try
         {
-            insertService.doService(memberId, storeId);
+            insertService.doService(memberId, review);
         }
         catch(ReviewException e){
             //에러 페이지 띄우기

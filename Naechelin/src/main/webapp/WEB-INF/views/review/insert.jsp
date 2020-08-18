@@ -17,6 +17,11 @@
     </script>
 </head>
 <body>
-
+<form method="post" action="/review/1">
+<input type="text" placeholder="prosandcons" id="reviewPac" name="reviewPac"/>
+<input type="text" placeholder="rating" id="reviewRating" name="reviewRating"/>
+<input type="text" placeholder="writer" id="writer" name="writer"/>
+<button type="submit">제출</button>
+</form>
 </body>
 </html>

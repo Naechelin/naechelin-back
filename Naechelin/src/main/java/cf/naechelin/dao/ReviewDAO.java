@@ -3,6 +3,8 @@ package cf.naechelin.dao;
 import cf.naechelin.exception.ReviewException;
 import cf.naechelin.vo.*;
 
+import javax.management.Query;
+import java.util.ArrayList;
 import java.util.List;
 
 public interface ReviewDAO
@@ -13,7 +15,7 @@ public interface ReviewDAO
     ReviewVO getStoreReview(ReviewVO review) throws ReviewException; // 리뷰 상세 보기
     List<NaechelinStarVO> getNaechelinList(QueryVO query)throws ReviewException; // 내슐랭
     List<NaechelinStarVO> getStoreList()throws ReviewException; // 내슐랭 가이드
-    MissionVO insertCheck(ReviewVO review)throws ReviewException; // insert시 매장 방문 체크
-    int findLineId(int memberId)throws ReviewException;
+    MissionVO insertCheck(QueryVO query)throws ReviewException; // insert시 매장 방문 체크
+    ArrayList<Integer> findLineId(int memberId)throws ReviewException;
     void reviewEdit(ReviewVO review)throws ReviewException;
 }
