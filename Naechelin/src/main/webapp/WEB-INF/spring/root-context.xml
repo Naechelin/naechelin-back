@@ -48,6 +48,11 @@
 		<property name="sqlSessionTemplate" ref="sqlSession"/>
 	</bean>
 
+	<bean id="storeStateMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cf.naechelin.mapper.StoreStateMapper"/>
+		<property name="sqlSessionTemplate" ref="sqlSession"/>
+	</bean>
+
 	<bean id="storeTypeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="cf.naechelin.mapper.StoreTypeMapper"/>
 		<property name="sqlSessionTemplate" ref="sqlSession"/>
