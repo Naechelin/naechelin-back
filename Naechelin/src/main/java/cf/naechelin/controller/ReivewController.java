@@ -48,7 +48,6 @@ public class ReivewController
     @Qualifier("naechelinGuideService")
     NaechelinGuideService naechelinGuideService;
 
-
     @RequestMapping(value="review/{storeId}", method = RequestMethod.GET)
     public String insert(HttpSession session, @PathVariable("storeId") int storeId)
     {
