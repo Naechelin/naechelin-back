@@ -5,7 +5,9 @@ import cf.naechelin.exception.QuestionException;
 import cf.naechelin.vo.AnswerVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
+@Service("questionAnswerInsertService")
 public class QuestionAnswerInsertServiceImpl implements QuestionAnswerInsertService
 {
     @Autowired
