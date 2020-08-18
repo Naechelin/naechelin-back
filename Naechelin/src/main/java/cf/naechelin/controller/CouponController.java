@@ -1,6 +1,7 @@
 package cf.naechelin.controller;
 
 import cf.naechelin.service.coupon.CouponListService;
+import cf.naechelin.service.coupon.CouponViewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,9 @@ public class CouponController
     @Autowired
     @Qualifier("CouponList")
     private CouponListService listService;
+    @Autowired
+    @Qualifier("CouponView")
+    private CouponViewService viewService;
 
     public CouponController() {}
 
@@ -27,10 +31,14 @@ public class CouponController
         return "delete";
     }
 
-    @RequestMapping(value = "/{couponId}", method = RequestMethod.GET)
-    public String view(@PathVariable("couponId") int couponId, HttpSession session)
+    @RequestMapping(value = "/{lineId}", method = RequestMethod.GET)
+    public ModelAndView view(@PathVariable("lineId") int lineId, HttpSession session)
     {
-        return "view";
+        ModelAndView view = new ModelAndView();
+        view.setViewName("couponView");
+        view.addObject("coupon", viewService.doService(lineId));
+
+        return view;
     }
 
     @RequestMapping(method = RequestMethod.GET)

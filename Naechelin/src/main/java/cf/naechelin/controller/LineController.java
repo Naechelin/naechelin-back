@@ -66,7 +66,7 @@ public class LineController
     {
         ModelAndView view = new ModelAndView();
 
-        view.setViewName("view");
+        view.setViewName("lineView");
         view.addObject("line", viewService.doService(lineId));
         return view;
     }

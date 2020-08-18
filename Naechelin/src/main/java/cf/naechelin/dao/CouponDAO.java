@@ -9,7 +9,7 @@ import java.util.List;
 public interface CouponDAO
 {
     void insert(CouponVO coupon);
-    void delete(CouponVO coupon);
+    void delete(int lineId);
     CouponVO view(int lineId);
     List<CouponVO> list(QueryVO query);
     BufferedImage createQR(int lineId);

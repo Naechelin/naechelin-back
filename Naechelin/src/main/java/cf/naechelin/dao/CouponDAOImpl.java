@@ -23,14 +23,16 @@ public class CouponDAOImpl implements CouponDAO
     @Override
     public void insert(CouponVO coupon)
     {
-
+        mapper.insert(coupon);
     }
 
     @Override
-    public void delete(CouponVO coupon)
+    public void delete(int lineId)
     {
-
+        mapper.delete(lineId);
     }
+
+    // 쿠폰을 사용하지 않았고 날짜가 지났을 경우 삭제하는 메소드
 
     @Override
     public CouponVO view(int lineId)

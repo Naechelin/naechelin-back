@@ -57,7 +57,7 @@ public class LineDAOImpl implements LineDAO
         try
         {
             // 코드인식시 링크걸 URL주소
-            String codeurl = new String("www.naver.com".getBytes("UTF-8"), "ISO-8859-1");
+            String codeurl = new String(toString().getBytes("UTF-8"), "ISO-8859-1");
             // 큐알코드 바코드 색상값
             int qrcodeColor = 0xFF2e4e96;
             // 큐알코드 배경색상값
