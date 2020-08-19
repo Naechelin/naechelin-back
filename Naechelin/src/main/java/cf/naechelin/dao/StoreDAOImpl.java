@@ -2,13 +2,12 @@ package cf.naechelin.dao;
 
 import cf.naechelin.exception.store.StoreException;
 import cf.naechelin.mapper.StoreMapper;
-import cf.naechelin.vo.MissionVO;
-import cf.naechelin.vo.QueryVO;
-import cf.naechelin.vo.StoreVO;
-import cf.naechelin.vo.VisitVO;
+import cf.naechelin.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository("storeDAO")
@@ -42,15 +41,25 @@ public class StoreDAOImpl implements StoreDAO
     }
 
     @Override
-    public List<StoreVO> listByString(QueryVO query) throws StoreException
+    public List<StoreVO> listByStoreTypeType(StoreTypeVO storeType) throws StoreException
     {
-        return mapper.listByString(query);
+        return mapper.listByStoreTypeType(storeType);
     }
 
     @Override
-    public List<StoreVO> listByInteger(QueryVO query) throws StoreException
+    public List<StoreVO> listByStoreStateType(StoreStateVO storeState) throws StoreException
     {
-        return mapper.listByInteger(query);
+        return mapper.listByStoreStateType(storeState);
+    }
+
+    @Override
+    public List<StoreVO> listByMemberId(MemberVO member) throws StoreException
+    {
+        ArrayList<StoreVO> list = (ArrayList<StoreVO>) mapper.listByMemberId(member);
+        for(StoreVO store: list){
+            System.out.println(store);
+        }
+        return list;
     }
 
     @Override

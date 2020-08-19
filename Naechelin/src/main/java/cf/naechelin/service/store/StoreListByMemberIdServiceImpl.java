@@ -2,6 +2,7 @@ package cf.naechelin.service.store;
 
 import cf.naechelin.dao.StoreDAO;
 import cf.naechelin.exception.store.StoreException;
+import cf.naechelin.vo.MemberVO;
 import cf.naechelin.vo.QueryVO;
 import cf.naechelin.vo.StoreVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,17 +11,16 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
-@Service("storeListByStringService")
-public class StoreListByStringServiceImpl implements StoreListByStringService
+@Service("storeListByMemberIdService")
+public class StoreListByMemberIdServiceImpl implements StoreListByMemberIdService
 {
     @Autowired
     @Qualifier("storeDAO")
     private StoreDAO storeDAO;
 
     @Override
-    public List<StoreVO> doService(QueryVO query) throws StoreException
+    public List<StoreVO> doService(MemberVO member) throws StoreException
     {
-        return storeDAO.listByString(query);
+        return storeDAO.listByMemberId(member);
     }
 }

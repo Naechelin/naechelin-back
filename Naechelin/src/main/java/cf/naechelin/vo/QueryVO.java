@@ -14,6 +14,12 @@ public class QueryVO
         this.word = word;
     }
 
+    public QueryVO(String condition, int intWord)
+    {
+        this.condition = condition;
+        this.intWord = intWord;
+    }
+
     public QueryVO(String condition, String word, int intWord)
     {
         this.condition = condition;
