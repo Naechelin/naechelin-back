@@ -1,5 +1,6 @@
 package cf.naechelin.vo;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -11,7 +12,7 @@ public class MemberVO
     private String memberEmail;
     private String memberPass;
     private String memberNick;
-    private Timestamp memberBirth;
+    private Date memberBirth;
     private Gender memberGender;
     private String memberType;
     private Timestamp memberRegDate;
@@ -22,139 +23,117 @@ public class MemberVO
 
     public MemberVO() { }
 
-    public MemberVO(int memberId, String memberEmail, String memberPass, String memberNick, Timestamp memberBirth, Gender memberGender, String memberType, Timestamp memberRegDate, Timestamp memberEndDate, String memberTel, List<StoreVO> storeList, MemberTypeVO memberTypeVO)
-    {
-        this.memberId = memberId;
-        this.memberEmail = memberEmail;
-        this.memberPass = memberPass;
-        this.memberNick = memberNick;
-        this.memberBirth = memberBirth;
-        this.memberGender = memberGender;
-        this.memberType = memberType;
-        this.memberRegDate = memberRegDate;
-        this.memberEndDate = memberEndDate;
-        this.memberTel = memberTel;
-        this.storeList = storeList;
-        this.memberTypeVO = memberTypeVO;
-    }
+	public MemberVO(int memberId, String memberEmail, String memberPass, String memberNick, Date memberBirth,
+			Gender memberGender, String memberType, Timestamp memberRegDate, Timestamp memberEndDate, String memberTel,
+			List<StoreVO> storeList, MemberTypeVO memberTypeVO) {
+		super();
+		this.memberId = memberId;
+		this.memberEmail = memberEmail;
+		this.memberPass = memberPass;
+		this.memberNick = memberNick;
+		this.memberBirth = memberBirth;
+		this.memberGender = memberGender;
+		this.memberType = memberType;
+		this.memberRegDate = memberRegDate;
+		this.memberEndDate = memberEndDate;
+		this.memberTel = memberTel;
+		this.storeList = storeList;
+		this.memberTypeVO = memberTypeVO;
+	}
 
-    public int getMemberId()
-    {
-        return memberId;
-    }
+	public int getMemberId() {
+		return memberId;
+	}
 
-    public void setMemberId(Object param)
-    {
-        this.memberId = memberId;
-    }
+	public void setMemberId(int memberId) {
+		this.memberId = memberId;
+	}
 
-    public String getMemberEmail()
-    {
-        return memberEmail;
-    }
+	public String getMemberEmail() {
+		return memberEmail;
+	}
 
-    public void setMemberEmail(Object param)
-    {
-        this.memberEmail = memberEmail;
-    }
+	public void setMemberEmail(String memberEmail) {
+		this.memberEmail = memberEmail;
+	}
 
-    public String getMemberPass()
-    {
-        return memberPass;
-    }
+	public String getMemberPass() {
+		return memberPass;
+	}
 
-    public void setMemberPass(Object param)
-    {
-        this.memberPass = memberPass;
-    }
+	public void setMemberPass(String memberPass) {
+		this.memberPass = memberPass;
+	}
 
-    public String getMemberNick()
-    {
-        return memberNick;
-    }
+	public String getMemberNick() {
+		return memberNick;
+	}
 
-    public void setMemberNick(Object param)
-    {
-        this.memberNick = memberNick;
-    }
+	public void setMemberNick(String memberNick) {
+		this.memberNick = memberNick;
+	}
 
-    public Timestamp getMemberBirth()
-    {
-        return memberBirth;
-    }
+	public Date getMemberBirth() {
+		return memberBirth;
+	}
 
-    public void setMemberBirth(Object param)
-    {
-        this.memberBirth = memberBirth;
-    }
+	public void setMemberBirth(Date memberBirth) {
+		this.memberBirth = memberBirth;
+	}
 
-    public Gender getMemberGender()
-    {
-        return memberGender;
-    }
+	public Gender getMemberGender() {
+		return memberGender;
+	}
 
-    public void setMemberGender(Object param)
-    {
-        this.memberGender = memberGender;
-    }
+	public void setMemberGender(Gender memberGender) {
+		this.memberGender = memberGender;
+	}
 
-    public String getMemberType()
-    {
-        return memberType;
-    }
+	public String getMemberType() {
+		return memberType;
+	}
 
-    public void setMemberType(Object param)
-    {
-        this.memberType = memberType;
-    }
+	public void setMemberType(String memberType) {
+		this.memberType = memberType;
+	}
 
-    public Timestamp getMemberRegDate()
-    {
-        return memberRegDate;
-    }
+	public Timestamp getMemberRegDate() {
+		return memberRegDate;
+	}
 
-    public void setMemberRegDate(Object param)
-    {
-        this.memberRegDate = memberRegDate;
-    }
+	public void setMemberRegDate(Timestamp memberRegDate) {
+		this.memberRegDate = memberRegDate;
+	}
 
-    public Timestamp getMemberEndDate()
-    {
-        return memberEndDate;
-    }
+	public Timestamp getMemberEndDate() {
+		return memberEndDate;
+	}
 
-    public void setMemberEndDate(Object param)
-    {
-        this.memberEndDate = memberEndDate;
-    }
+	public void setMemberEndDate(Timestamp memberEndDate) {
+		this.memberEndDate = memberEndDate;
+	}
 
-    public String getMemberTel()
-    {
-        return memberTel;
-    }
+	public String getMemberTel() {
+		return memberTel;
+	}
 
-    public void setMemberTel(Object param)
-    {
-        this.memberTel = memberTel;
-    }
+	public void setMemberTel(String memberTel) {
+		this.memberTel = memberTel;
+	}
 
-    public List<StoreVO> getStoreList()
-    {
-        return storeList;
-    }
+	public List<StoreVO> getStoreList() {
+		return storeList;
+	}
 
-    public void setStoreList(Object param)
-    {
-        this.storeList = storeList;
-    }
+	public void setStoreList(List<StoreVO> storeList) {
+		this.storeList = storeList;
+	}
 
-    public MemberTypeVO getMemberTypeVO()
-    {
-        return memberTypeVO;
-    }
+	public MemberTypeVO getMemberTypeVO() {
+		return memberTypeVO;
+	}
 
-    public void setMemberTypeVO(Object param)
-    {
-        this.memberTypeVO = memberTypeVO;
-    }
+	public void setMemberTypeVO(MemberTypeVO memberTypeVO) {
+		this.memberTypeVO = memberTypeVO;
+	}
 }
