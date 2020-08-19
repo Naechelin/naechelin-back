@@ -6,6 +6,8 @@ import cf.naechelin.vo.MemberVO;
 import cf.naechelin.vo.QueryVO;
 import cf.naechelin.vo.StoreVO;
 import cf.naechelin.vo.VisitVO;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -15,7 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -39,12 +44,16 @@ public class StoreController
     StoreViewService storeViewService;
 
     @Autowired
-    @Qualifier("storeListByStringService")
-    StoreListByStringService storeListByStringService;
+    @Qualifier("storeListByStoreStateTypeService")
+    StoreListByStoreStateTypeService storeListByStoreStateTypeService;
 
     @Autowired
-    @Qualifier("storeListByIntegerService")
-    StoreListByIntegerService storeListByIntegerService;
+    @Qualifier("storeListByStoreTypeTypeService")
+    StoreListByStoreTypeTypeService storeListByStoreTypeTypeService;
+
+    @Autowired
+    @Qualifier("storeListByMemberIdService")
+    StoreListByMemberIdService storeListByMemberIdService;
 
     @Autowired
     @Qualifier("storeHowManyVisitsService")
@@ -160,22 +169,54 @@ public class StoreController
     }
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public String list(HttpServletRequest request, Model model)
+    public void list(HttpServletRequest request, HttpServletResponse response )
     {
-        HttpSession session = request.getSession();
-        MemberVO member = (MemberVO)session.getAttribute("member");
+        String callback = request.getParameter("callback"); // ㅇㅇㅇ
+
+        ArrayList<StoreVO> storeList = null;
+//        HttpSession session = request.getSession();
+//        MemberVO member = (MemberVO)session.getAttribute("member");
+//        if(member == null){ return "login"; }
+
         try
         {
-            QueryVO query = new QueryVO("memberId", member.getMemberId()+"");
-            List<StoreVO> storeList = storeListByStringService.doService(query);
-            model.addAttribute("storeList", storeList);
+            MemberVO member = new MemberVO();
+            member.setMemberId(1);
+            storeList = (ArrayList<StoreVO>)storeListByMemberIdService.doService(member);
+            for( StoreVO store : storeList)
+            {
+                System.out.println(store);
+            }
         }
         catch(StoreException e)
         {
-            model.addAttribute(e.getMessage());
             e.printStackTrace();
-            return "owner/error";
         }
-        return "owner/home";
+        JSONArray jArray = new JSONArray();
+        JSONObject jObj = new JSONObject();
+        try {
+            for(StoreVO store : storeList) {
+                JSONObject jtemp = new JSONObject();
+                jtemp.putAll(store.convertMap());
+                jArray.add(jtemp);
+            }
+            jObj.put("storeList",jArray);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        PrintWriter out = null;
+
+        try {
+            response.setCharacterEncoding("utf-8");
+            response.setContentType("application/json");
+            out = response.getWriter();
+            out.println(callback+"("+jObj.toJSONString()+")");
+            System.out.println("함수 종료");
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }

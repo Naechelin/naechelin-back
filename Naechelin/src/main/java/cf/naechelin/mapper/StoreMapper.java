@@ -1,10 +1,7 @@
 package cf.naechelin.mapper;
 
 import cf.naechelin.exception.store.StoreException;
-import cf.naechelin.vo.MissionVO;
-import cf.naechelin.vo.QueryVO;
-import cf.naechelin.vo.StoreVO;
-import cf.naechelin.vo.VisitVO;
+import cf.naechelin.vo.*;
 
 import java.awt.*;
 import java.util.List;
@@ -15,8 +12,9 @@ public interface StoreMapper
     void update(StoreVO store) throws StoreException;
     void delete(StoreVO store) throws StoreException;
     StoreVO view(StoreVO store) throws StoreException;
-    List<StoreVO> listByString(QueryVO query) throws StoreException;
-    List<StoreVO> listByInteger(QueryVO query) throws StoreException;
+    List<StoreVO> listByStoreTypeType(StoreTypeVO storeType) throws StoreException;
+    List<StoreVO> listByStoreStateType(StoreStateVO storeState) throws StoreException;
+    List<StoreVO> listByMemberId(MemberVO member) throws StoreException;
     void insertRequest(StoreVO store) throws StoreException;
     void updateRequest(StoreVO store) throws StoreException;
     void deleteRequest(StoreVO store) throws StoreException;

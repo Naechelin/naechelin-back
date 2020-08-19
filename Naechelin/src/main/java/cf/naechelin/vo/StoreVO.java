@@ -1,5 +1,6 @@
 package cf.naechelin.vo;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 public class StoreVO {
@@ -10,7 +11,7 @@ public class StoreVO {
     private String storeTypeType;
     private String storeAddress;
     private String storeAddressDetail;
-    private String StoreOwner;
+    private String storeOwner;
     private String storeTel;
     private String storeFax;
     private String storeStateType;
@@ -34,7 +35,7 @@ public class StoreVO {
         this.storeTypeType = storeTypeType;
         this.storeAddress = storeAddress;
         this.storeAddressDetail = storeAddressDetail;
-        this.StoreOwner = storeOwner;
+        this.storeOwner = storeOwner;
         this.storeTel = storeTel;
         this.storeFax = storeFax;
         this.storeStateType = storeStateType;
@@ -104,11 +105,11 @@ public class StoreVO {
     }
 
     public String getStoreOwner() {
-        return StoreOwner;
+        return storeOwner;
     }
 
     public void setStoreOwner(String storeOwner) {
-        StoreOwner = storeOwner;
+        this.storeOwner = storeOwner;
     }
 
     public String getStoreTel() {
@@ -201,7 +202,7 @@ public class StoreVO {
                 Objects.equals(storeTypeType, storeVO.storeTypeType) &&
                 Objects.equals(storeAddress, storeVO.storeAddress) &&
                 Objects.equals(storeAddressDetail, storeVO.storeAddressDetail) &&
-                Objects.equals(StoreOwner, storeVO.StoreOwner) &&
+                Objects.equals(storeOwner, storeVO.storeOwner) &&
                 Objects.equals(storeTel, storeVO.storeTel) &&
                 Objects.equals(storeFax, storeVO.storeFax) &&
                 Objects.equals(storeStateType, storeVO.storeStateType) &&
@@ -214,7 +215,7 @@ public class StoreVO {
 
     @Override
     public int hashCode() {
-        return Objects.hash(storeId, memberId, storeBusinessNum, storeName, storeTypeType, storeAddress, storeAddressDetail, StoreOwner, storeTel, storeFax, storeStateType, storeRegDate, storeEndDate, storeLatitude, storeLongitude, member, storeType, storeState);
+        return Objects.hash(storeId, memberId, storeBusinessNum, storeName, storeTypeType, storeAddress, storeAddressDetail, storeOwner, storeTel, storeFax, storeStateType, storeRegDate, storeEndDate, storeLatitude, storeLongitude, member, storeType, storeState);
     }
 
     @Override
@@ -227,7 +228,7 @@ public class StoreVO {
                 ", storeTypeType='" + storeTypeType + '\'' +
                 ", storeAddress='" + storeAddress + '\'' +
                 ", storeAddressDetail='" + storeAddressDetail + '\'' +
-                ", StoreOwner='" + StoreOwner + '\'' +
+                ", storeOwner='" + storeOwner + '\'' +
                 ", storeTel='" + storeTel + '\'' +
                 ", storeFax='" + storeFax + '\'' +
                 ", storeStateType='" + storeStateType + '\'' +
@@ -239,5 +240,31 @@ public class StoreVO {
                 ", storeType=" + storeType +
                 ", storeState=" + storeState +
                 '}';
+    }
+
+    public HashMap<String, Object> convertMap()
+    {
+        HashMap<String, Object> map = new HashMap<>();
+
+        map.put("storeId", storeId);
+        map.put("memberId", memberId);
+        map.put("storeBusinessNum", storeBusinessNum);
+        map.put("storeName", storeName);
+        map.put("storeTypeType", storeTypeType);
+        map.put("storeAddress", storeAddress);
+        map.put("storeAddressDetail", storeAddressDetail);
+        map.put("storeOwner", storeOwner);
+        map.put("storeTel", storeTel);
+        map.put("storeFax", storeFax);
+        map.put("storeStateType", storeStateType);
+        map.put("storeRegDate", storeRegDate);
+        map.put("storeEndDate", storeEndDate);
+        map.put("storeLatitude", storeLatitude);
+        map.put("storeLongitude", storeLongitude);
+        map.put("member", member);
+        map.put("storeType", storeType);
+        map.put("storeState", storeState);
+
+        return map;
     }
 }

@@ -39,12 +39,16 @@
         SELECT * FROM store WHERE storeId = #{storeId}
     </select>
 
-    <select id="listByString" parameterType="Query" resultType="java.util.List">
-        SELECT * FROM store WHERE #{condition} = #{word}
+    <select id="listByStoreTypeType" parameterType="StoreType" resultType="Store">
+        SELECT * FROM store WHERE storeTypeType = #{storeTypeType}
     </select>
 
-    <select id="listByInteger" parameterType="Query" resultType="java.util.List">
-        SELECT * FROM store WHERE #{condition} = #{intWord}
+    <select id="listByStoreStateType" parameterType="StoreState" resultType="Store">
+        SELECT * FROM store WHERE storeStateType = #{storeStateType}
+    </select>
+
+    <select id="listByMemberId" parameterType="Member" resultType="Store">
+        SELECT * FROM store WHERE memberId =#{memberId}
     </select>
 
     <select id="howManyVisits" parameterType="Store" resultType="Visit">
