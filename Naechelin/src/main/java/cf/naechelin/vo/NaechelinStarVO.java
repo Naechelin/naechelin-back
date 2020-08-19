@@ -1,5 +1,7 @@
 package cf.naechelin.vo;
 
+import java.util.HashMap;
+
 public class NaechelinStarVO
 {
     int storeId;
@@ -55,5 +57,16 @@ public class NaechelinStarVO
     public void setStoreLongitude(int storeLongitude)
     {
         this.storeLongitude = storeLongitude;
+    }
+
+    public HashMap<String, Object> convertMap()
+    {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("storeId", storeId);
+        map.put("reviewRating", reviewRating);
+        map.put("storeLatitude", storeLatitude);
+        map.put("storeLongitude", storeLongitude);
+
+        return map;
     }
 }

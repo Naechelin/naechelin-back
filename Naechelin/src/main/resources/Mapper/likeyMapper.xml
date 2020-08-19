@@ -8,12 +8,9 @@
         INSERT INTO likey VALUES(#{memberId}, #{storeId})
     </insert>
     <delete id="delete" parameterType="Likey">
-        DELETE FROM likey WHERE store_id=#{storeId} AND member_id=#{memberId}
+        DELETE FROM likey WHERE storeId=#{storeId} AND memberId=#{memberId}
     </delete>
-    <select id="likeStoreList" parameterType="Query" resultType="java.util.List">
-        SELECT * FROM likey WHERE #{condition}=#{intWord}
-    </select>
-    <select id="viewStore" parameterType="Likey" resultType="Store">
-        SELECT * FROM store WHERE store_id=${storeId}
+    <select id="likeStoreList" parameterType="Query" resultType="Naechelin">
+        select storeId,storeLatitude,storeLongitude from store inner join (select * from likey where memberId=#{intWord})as a using(storeId);
     </select>
 </mapper>

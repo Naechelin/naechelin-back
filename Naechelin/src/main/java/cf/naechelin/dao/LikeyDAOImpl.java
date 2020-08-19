@@ -4,6 +4,7 @@ package cf.naechelin.dao;
 import cf.naechelin.exception.LikeyException;
 import cf.naechelin.mapper.LikeyMapper;
 import cf.naechelin.vo.LikeyVO;
+import cf.naechelin.vo.NaechelinStarVO;
 import cf.naechelin.vo.QueryVO;
 import cf.naechelin.vo.StoreVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,20 +33,10 @@ public class LikeyDAOImpl implements LikeyDAO
     }
 
     @Override
-    public List<LikeyVO> LikeStoreList(QueryVO query) throws LikeyException
+    public List<NaechelinStarVO> LikeStoreList(QueryVO query) throws LikeyException
     {
 
         return likeyMapper.LikeStoreList(query);
     }
 
-    @Override
-    public List<StoreVO> MyLikeList(List<LikeyVO> likeyList) throws LikeyException
-    {
-        List<StoreVO> list = new ArrayList<>();
-        for(LikeyVO likey : likeyList)
-        {
-            list.add(likeyMapper.viewStore(likey));
-        }
-        return list;
-    }
 }

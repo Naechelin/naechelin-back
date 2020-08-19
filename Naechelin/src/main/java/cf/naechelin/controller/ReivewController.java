@@ -4,6 +4,8 @@ import cf.naechelin.exception.ReviewException;
 import cf.naechelin.service.review.*;
 import cf.naechelin.vo.NaechelinStarVO;
 import cf.naechelin.vo.ReviewVO;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -13,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -55,7 +60,7 @@ public class ReivewController
     }
 
     @RequestMapping(value="review/{storeId}", method = RequestMethod.POST)
-    public String insert(HttpServletRequest request, @PathVariable("storeId") int storeId)
+    public String insert(HttpServletRequest request, @PathVariable("storeId") int storeId, HttpServletResponse response)
     {
 //        HttpSession session = request.getSession(false);
 //        String mStr = (session.getAttribute("memberId")).toString();
@@ -63,7 +68,8 @@ public class ReivewController
 //            return "review/error";
 //        }
 //        int memberId = Integer.parseInt(mStr);
-
+        String reviewPac1 = request.getParameter("reviewPac");
+        System.out.println("reviewPac" +":"+reviewPac1);
         int memberId = Integer.parseInt(request.getParameter("writer"));// 나중에 지우기
         int reviewRating = Integer.parseInt(request.getParameter("reviewRating"));
         String reviewPhoto = request.getParameter("reviewPhoto");
@@ -127,37 +133,125 @@ public class ReivewController
     }
 
     @RequestMapping(value = "review/{storeId}/list",method = RequestMethod.GET)
-    public String list(HttpSession session,Model model, @PathVariable("storeId") int storeId){
-//        if(session == null){
-//            return "review/error";
-//        }
+    public void list( HttpServletRequest request,@PathVariable("storeId") int storeId,HttpServletResponse response){
+        ArrayList<ReviewVO> list= null;
         try
         {
-            model.addAttribute("list", listService.doService("storeId", storeId));
+            list = (ArrayList<ReviewVO>)listService.doService("storeId", storeId);
+            ReviewVO review;
         }
         catch(ReviewException e){
             e.printStackTrace();
         }
-        return "review/list";
+        JSONArray jArray = new JSONArray();
+        JSONObject jObj = new JSONObject();
+        try {
+            for(ReviewVO review : list) {
+                JSONObject jtemp = new JSONObject();
+                jtemp.putAll(review.convertMap());
+                jArray.add(jtemp);
+            }
+            jObj.put("list",jArray);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        PrintWriter out = null;
+
+        try {
+            response.setCharacterEncoding("utf-8");
+            response.setContentType("application/json");
+            out = response.getWriter();
+            out.println(jObj.toJSONString());
+
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @RequestMapping(value = "/naechelin",method = RequestMethod.GET)
-    public String Naechelin(HttpSession session, Model model){
+    public void Naechelin(HttpServletRequest request, HttpServletResponse response){
+//        HttpSession session = request.getSession(false);
+//        int memberId = Integer.parseInt(session.getAttribute("memberId").toString());
+        int memberId = 2;
 
-        int memberId = Integer.parseInt(session.getAttribute("sessionId").toString());
+        ArrayList<NaechelinStarVO> list = null;
+        try
+        {
+            list = (ArrayList<NaechelinStarVO>) naechelinService.doService("memberId",memberId);
+        }
+        catch(ReviewException e){
+            e.printStackTrace();
+        }
 
-        List<NaechelinStarVO> list = naechelinService.doService("memberId",memberId);
-        model.addAttribute("list",list);
-        return "review/list";
+        JSONArray jArray = new JSONArray();
+        JSONObject jObj = new JSONObject();
+        try {
+            for(NaechelinStarVO naechelin : list) {
+                JSONObject jtemp = new JSONObject();
+                jtemp.putAll(naechelin.convertMap());
+                jArray.add(jtemp);
+            }
+            jObj.put("list",jArray);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        PrintWriter out = null;
+
+        try {
+            response.setCharacterEncoding("utf-8");
+            response.setContentType("application/json");
+            out = response.getWriter();
+            out.println(jObj.toJSONString());
+
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @RequestMapping(value = "/naechelinguide", method=RequestMethod.GET)
-    public String naechelinGuide(HttpSession session,Model model){
-        if(session.getAttribute("memberId") == null){
-            return "review/error";
+    public void naechelinGuide(HttpServletRequest request,HttpServletResponse response){
+//        HttpSession session = request.getSession(false);
+//        int memberId = Integer.parseInt(session.getAttribute("memberId").toString());
+        ArrayList<NaechelinStarVO> list = null;
+        try
+        {
+            list = (ArrayList<NaechelinStarVO>) naechelinGuideService.doService();
         }
-        List<NaechelinStarVO> list = naechelinGuideService.doService();
-        model.addAttribute("list",list);
-        return "review/list";
+        catch(ReviewException e){
+            e.printStackTrace();
+        }
+
+        JSONArray jArray = new JSONArray();
+        JSONObject jObj = new JSONObject();
+        try {
+            for(NaechelinStarVO naechelin : list) {
+                JSONObject jtemp = new JSONObject();
+                jtemp.putAll(naechelin.convertMap());
+                jArray.add(jtemp);
+            }
+            jObj.put("list",jArray);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        PrintWriter out = null;
+
+        try {
+            response.setCharacterEncoding("utf-8");
+            response.setContentType("application/json");
+            out = response.getWriter();
+            out.println(jObj.toJSONString());
+
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }
