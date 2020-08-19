@@ -1,6 +1,7 @@
 // ReviewVO jeonka1001 2020.08.15
 package cf.naechelin.vo;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 public class ReviewVO
@@ -10,16 +11,18 @@ public class ReviewVO
     private String reviewPac;
     private String reviewPhoto;
     private int reviewRating;
+    private String writer;
 
     public ReviewVO(){}
 
-    public ReviewVO(int lineId, int storeId, String reviewPac, String reviewPhoto, int reviewRating)
+    public ReviewVO(int lineId, int storeId, String reviewPac, String reviewPhoto, int reviewRating, String writer)
     {
         this.lineId = lineId;
         this.storeId = storeId;
         this.reviewPac = reviewPac;
         this.reviewPhoto = reviewPhoto;
         this.reviewRating = reviewRating;
+        this.writer = writer;
     }
 
     public int getLineId()
@@ -72,6 +75,16 @@ public class ReviewVO
         this.reviewRating = reviewRating;
     }
 
+    public String getWriter()
+    {
+        return writer;
+    }
+
+    public void setWriter(String writer)
+    {
+        this.writer = writer;
+    }
+
     @Override
     public boolean equals(Object o)
     {
@@ -82,12 +95,28 @@ public class ReviewVO
                 storeId == reviewVO.storeId &&
                 reviewRating == reviewVO.reviewRating &&
                 reviewPac.equals(reviewVO.reviewPac) &&
-                reviewPhoto.equals(reviewVO.reviewPhoto);
+                reviewPhoto.equals(reviewVO.reviewPhoto) &&
+                writer.equals(reviewVO.writer);
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(lineId, storeId, reviewPac, reviewPhoto, reviewRating);
+        return Objects.hash(lineId, storeId, reviewPac, reviewPhoto, reviewRating, writer);
     }
+
+    public HashMap<String, Object> convertMap()
+    {
+        HashMap<String, Object> map = new HashMap<>();
+
+        map.put("lineId", lineId);
+        map.put("storeId", storeId);
+        map.put("reviewPac", reviewPac);
+        map.put("reviewPhoto", reviewPhoto);
+        map.put("reviewRating", reviewRating);
+        map.put("writer", writer);
+
+        return map;
+    }
+
 }
