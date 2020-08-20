@@ -35,8 +35,8 @@ public class LikeyDAOImpl implements LikeyDAO
     @Override
     public List<NaechelinStarVO> LikeStoreList(QueryVO query) throws LikeyException
     {
-
-        return likeyMapper.LikeStoreList(query);
+        List<NaechelinStarVO> list =likeyMapper.likeyStoreList(query);
+        return list;
     }
 
 }

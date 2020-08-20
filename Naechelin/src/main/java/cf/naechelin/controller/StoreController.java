@@ -44,8 +44,8 @@ public class StoreController
     StoreViewService storeViewService;
 
     @Autowired
-    @Qualifier("storeListByStoreStateTypeService")
-    StoreListByStoreStateTypeService storeListByStoreStateTypeService;
+    @Qualifier("storeListByStoreTypeTypeService")
+    StoreListByStoreTypeTypeService storeListByStoreStateTypeService;
 
     @Autowired
     @Qualifier("storeListByStoreTypeTypeService")

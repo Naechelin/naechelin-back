@@ -10,7 +10,7 @@
     <delete id="delete" parameterType="Likey">
         DELETE FROM likey WHERE storeId=#{storeId} AND memberId=#{memberId}
     </delete>
-    <select id="likeStoreList" parameterType="Query" resultType="Naechelin">
+    <select id="likeyStoreList" parameterType="Query" resultType="Naechelin">
         select storeId,storeLatitude,storeLongitude from store inner join (select * from likey where memberId=#{intWord})as a using(storeId);
     </select>
 </mapper>

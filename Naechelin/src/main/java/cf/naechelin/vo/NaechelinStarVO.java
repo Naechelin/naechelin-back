@@ -6,8 +6,8 @@ public class NaechelinStarVO
 {
     int storeId;
     int reviewRating;
-    int storeLatitude;
-    int storeLongitude;
+    double storeLatitude;
+    double storeLongitude;
 
     public NaechelinStarVO(){}
 
@@ -39,22 +39,22 @@ public class NaechelinStarVO
         this.reviewRating = reviewRating;
     }
 
-    public int getStoreLatitude()
+    public double getStoreLatitude()
     {
         return storeLatitude;
     }
 
-    public void setStoreLatitude(int storeLatitude)
+    public void setStoreLatitude(double storeLatitude)
     {
         this.storeLatitude = storeLatitude;
     }
 
-    public int getStoreLongitude()
+    public double getStoreLongitude()
     {
         return storeLongitude;
     }
 
-    public void setStoreLongitude(int storeLongitude)
+    public void setStoreLongitude(double storeLongitude)
     {
         this.storeLongitude = storeLongitude;
     }
@@ -64,8 +64,8 @@ public class NaechelinStarVO
         HashMap<String, Object> map = new HashMap<>();
         map.put("storeId", storeId);
         map.put("reviewRating", reviewRating);
-        map.put("storeLatitude", storeLatitude);
-        map.put("storeLongitude", storeLongitude);
+        map.put("y", storeLatitude);
+        map.put("x", storeLongitude);
 
         return map;
     }

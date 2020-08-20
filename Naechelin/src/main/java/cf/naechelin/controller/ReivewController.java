@@ -175,6 +175,7 @@ public class ReivewController
     public void Naechelin(HttpServletRequest request, HttpServletResponse response){
 //        HttpSession session = request.getSession(false);
 //        int memberId = Integer.parseInt(session.getAttribute("memberId").toString());
+        System.out.println("naechelin");
         int memberId = 2;
 
         ArrayList<NaechelinStarVO> list = null;
@@ -190,6 +191,7 @@ public class ReivewController
         JSONObject jObj = new JSONObject();
         try {
             for(NaechelinStarVO naechelin : list) {
+                System.out.println(naechelin.getStoreLongitude()+","+naechelin.getStoreLatitude());
                 JSONObject jtemp = new JSONObject();
                 jtemp.putAll(naechelin.convertMap());
                 jArray.add(jtemp);
@@ -214,10 +216,12 @@ public class ReivewController
         }
     }
 
-    @RequestMapping(value = "/naechelinguide", method=RequestMethod.GET)
+    @RequestMapping(value = "/naechelin/all", method=RequestMethod.GET)
     public void naechelinGuide(HttpServletRequest request,HttpServletResponse response){
 //        HttpSession session = request.getSession(false);
 //        int memberId = Integer.parseInt(session.getAttribute("memberId").toString());
+
+        System.out.println("guide");
         ArrayList<NaechelinStarVO> list = null;
         try
         {
