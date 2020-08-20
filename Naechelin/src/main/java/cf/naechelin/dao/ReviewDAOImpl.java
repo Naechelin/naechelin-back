@@ -49,8 +49,12 @@ public class ReviewDAOImpl implements ReviewDAO
     @Override
     public List<NaechelinStarVO> getNaechelinList(QueryVO query) throws ReviewException
     {
+
         ArrayList<NaechelinStarVO> list;
-        list = (ArrayList<NaechelinStarVO>)reviewMapper.myNaechelinList(query);
+        list = reviewMapper.myNaechelinList(query);
+        for(NaechelinStarVO naechelin : list){
+            System.out.println(naechelin.getStoreLongitude()+","+naechelin.getStoreLatitude());
+        }
         return list;
     }
 
@@ -58,7 +62,7 @@ public class ReviewDAOImpl implements ReviewDAO
     public List<NaechelinStarVO> getStoreList() throws ReviewException
     {
         ArrayList<NaechelinStarVO> list;
-        list = (ArrayList<NaechelinStarVO>)reviewMapper.guideList();
+        list = reviewMapper.guideList();
         return list;
     }
 

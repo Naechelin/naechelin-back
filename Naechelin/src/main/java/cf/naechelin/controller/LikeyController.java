@@ -58,9 +58,9 @@ public class LikeyController
     @RequestMapping(value="likey/list", method = RequestMethod.GET)
     public void likeyList(HttpServletRequest request, HttpServletResponse response){
 //        HttpSession session = request.getSession(false);
+//        int  memberId = Integer.parseInt(session.getAttribute("memberId").toString());
 
         ArrayList<NaechelinStarVO> list = null;
-//        int  memberId = Integer.parseInt(session.getAttribute("memberId").toString());
 
         int memberId = 2;
         try
@@ -96,7 +96,6 @@ public class LikeyController
         {
             e.printStackTrace();
         }
-
 
 
     }

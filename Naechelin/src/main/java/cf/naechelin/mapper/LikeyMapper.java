@@ -14,6 +14,6 @@ public interface LikeyMapper
 {
     void insert(LikeyVO likey)throws LikeyException;
     void delete(LikeyVO likey) throws LikeyException;
-    ArrayList<NaechelinStarVO> LikeStoreList(QueryVO query)throws LikeyException;
+    ArrayList<NaechelinStarVO> likeyStoreList(QueryVO query)throws LikeyException;
 }
 

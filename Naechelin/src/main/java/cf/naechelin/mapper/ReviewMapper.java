@@ -12,8 +12,8 @@ public interface ReviewMapper
     void delete(ReviewVO review) throws ReviewException;
     List<ReviewVO> reviewList(QueryVO query);
     ReviewVO viewDetail(ReviewVO review) throws ReviewException;
-    List<NaechelinStarVO> myNaechelinList(QueryVO query)throws ReviewException;
-    List<NaechelinStarVO> guideList()throws ReviewException;
+    ArrayList<NaechelinStarVO> myNaechelinList(QueryVO query)throws ReviewException;
+    ArrayList<NaechelinStarVO> guideList()throws ReviewException;
     MissionVO insertCheck(ReviewVO review) throws ReviewException;
     int findLineId(int memberId)throws ReviewException;
     void reviewEdit(ReviewVO review)throws ReviewException;

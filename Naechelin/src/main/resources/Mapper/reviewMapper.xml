@@ -17,7 +17,7 @@
         SELECT lineId,storeId,reviewPac,reviewPhoto,reviewRating,memberNick as writer from member inner join (SELECT lineId,storeId,reviewPac,reviewPhoto,reviewrating,memberId FROM review inner join line using(lineId) where storeId=#{intWord})  as b USING(memberId);
     </select>
     <select id="myNaechelinList" parameterType="Query" resultType="Naechelin">
-        SELECT reviewRating-5, storeLatitude,storeLongitude FROM store INNER JOIN (SELECT storeId,reviewRating FROM review INNER JOIN line USING(lineId) WHERE reviewRating <![CDATA[ > ]]> 5 AND memberId = #{memberId}) AS A USING(storeId)
+        SELECT reviewRating-5, storeLatitude,storeLongitude FROM store INNER JOIN (SELECT storeId,reviewRating FROM review INNER JOIN line USING(lineId) WHERE reviewRating <![CDATA[ > ]]> 5 AND memberId = #{intWord}) AS A USING(storeId)
     </select>
     <select id="guideList" resultType="Naechelin">
         SELECT storeId,b.reviewRating as reviewRating,storeLatitude,storeLongitude FROM store INNER JOIN ( SELECT storeId,avg(reviewRating) as reviewRating FROM review GROUP BY storeId ) AS b USING (storeId) WHERE reviewRating <![CDATA[ > ]]> 5
